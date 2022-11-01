@@ -5,15 +5,16 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "activite")
 public class Activite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_activite", nullable = false)
     private int id_activite;
-    @Column(name = "titre")
+    @Column(name = "titre", length = 150)
     private String titre;
 
-    @Column(name = "descriptif")
+    @Column(name = "descriptif", length = 150)
     private String descriptif;
 
     @Column(name = "date_debut")

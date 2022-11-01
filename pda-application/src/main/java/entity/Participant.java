@@ -3,8 +3,9 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "participant")
 public class Participant {
-    @Column(name = "structure")
+    @Column(name = "structure", length = 150)
     private String structure;
 
 

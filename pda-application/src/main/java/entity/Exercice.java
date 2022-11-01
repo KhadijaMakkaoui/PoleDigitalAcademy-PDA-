@@ -5,12 +5,13 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "exercice")
 public class Exercice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_exercice", nullable = false)
     private int id_exercice;
-    @Column(name = "annee")
+    @Column(name = "annee", length = 150)
     private String annee;
 
     @Column(name = "date_debut")

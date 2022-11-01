@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "responsable")
 public class Responsable {
     @Enumerated(EnumType.STRING)
     private Etat etat;
