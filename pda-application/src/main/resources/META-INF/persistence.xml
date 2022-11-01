@@ -6,21 +6,21 @@
     <persistence-unit name="default">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>entity.Activite</class>
-        <class>entity.Admin</class>
-        <class>entity.Exercice</class>
-        <class>entity.Participant</class>
-        <class>entity.Participation</class>
-        <class>entity.Responsable</class>
-        <class>entity.Role</class>
-        <class>entity.User</class>
+        <class>com.pda.pdaapplication.entity.Activite</class>
+        <class>com.pda.pdaapplication.entity.Admin</class>
+        <class>com.pda.pdaapplication.entity.Exercice</class>
+        <class>com.pda.pdaapplication.entity.Participant</class>
+        <class>com.pda.pdaapplication.entity.Participation</class>
+        <class>com.pda.pdaapplication.entity.Responsable</class>
+        <class>com.pda.pdaapplication.entity.Role</class>
+        <class>com.pda.pdaapplication.entity.User</class>
 
         <properties>
-
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:8080/pda"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.user" value="postgres"/>
+
             <property name="hibernate.connection.password" value="root"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

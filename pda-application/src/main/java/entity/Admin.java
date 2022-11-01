@@ -3,11 +3,12 @@ package entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "admin")
 public class Admin {
-    @Column(name = "login")
+    @Column(name = "login", length = 150)
     private String login;
 
-    @Column(name = "password")
+    @Column(name = "password", length = 150)
     private String password;
 
     @Enumerated(EnumType.STRING)
