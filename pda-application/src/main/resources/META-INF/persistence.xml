@@ -6,14 +6,14 @@
     <persistence-unit name="default">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>com.pda.pdaapplication.entity.Activite</class>
-        <class>com.pda.pdaapplication.entity.Admin</class>
-        <class>com.pda.pdaapplication.entity.Exercice</class>
-        <class>com.pda.pdaapplication.entity.Participant</class>
-        <class>com.pda.pdaapplication.entity.Participation</class>
-        <class>com.pda.pdaapplication.entity.Responsable</class>
-        <class>com.pda.pdaapplication.entity.Role</class>
-        <class>com.pda.pdaapplication.entity.User</class>
+        <class>entity.Activite</class>
+        <class>entity.Admin</class>
+        <class>entity.Exercice</class>
+        <class>entity.Participant</class>
+        <class>entity.Participation</class>
+        <class>entity.Responsable</class>
+        <class>entity.Role</class>
+        <class>entity.User</class>
 
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
