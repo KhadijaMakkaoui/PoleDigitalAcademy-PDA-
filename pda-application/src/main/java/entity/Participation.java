@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "participation")
 public class Participation {
@@ -12,6 +14,12 @@ public class Participation {
 
     @Column(name = "present")
     private boolean present;
+
+    @ManyToOne
+    Activite activite;
+
+    @ManyToOne
+    Participant participant;
 
     public Long getId() {
         return id;

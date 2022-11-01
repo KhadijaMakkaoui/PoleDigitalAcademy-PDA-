@@ -2,6 +2,8 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "participant")
 public class Participant {
@@ -13,6 +15,8 @@ public class Participant {
     @Column(name = "structure", length = 150)
     private String structure;
 
+    @OneToMany(mappedBy = "participant")
+    List<Participation> participations;
     public Long getId_p() {
         return id_p;
     }

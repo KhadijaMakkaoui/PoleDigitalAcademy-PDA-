@@ -2,7 +2,9 @@ package entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "activite")
@@ -28,6 +30,9 @@ public class Activite {
 
     @Enumerated(EnumType.STRING)
     private Etat etat;
+    @OneToMany(mappedBy = "activite")
+    List<Participation> participations;
+
 
     // need to add responsable object with annotations
 

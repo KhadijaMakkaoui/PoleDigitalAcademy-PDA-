@@ -23,7 +23,7 @@ public class User {
 
     @Column(name = "domaine", length = 150)
     private String domaine;
-   @ManyToOne()
+   @ManyToOne
     Role role;
     public int getId_user() {
         return id_user;
