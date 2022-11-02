@@ -4,7 +4,11 @@ import entity.Admin;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 import repository.IRepository;
+
+import java.util.List;
 
 public class adminRepoImp implements IRepository<Admin> {
     private EntityManager entityManager;
@@ -25,6 +29,22 @@ public class adminRepoImp implements IRepository<Admin> {
     public Admin find(int id) {
         return entityManager.find(Admin.class, id);
     }
+
+    public boolean findByLogin(String Login) {
+        boolean exist = false;
+        try {
+            entityManager.getTransaction().begin();
+            Query query = (Query) entityManager.createQuery("Select id from Admin where login =" + Login);
+            // int admin = (int) query.getSingleResult();
+            entityManager.getTransaction().commit();
+            exist = (boolean) query.getSingleResult();
+            return exist;
+        } catch (Exception e) {
+            System.out.println(e);
+            return exist;
+        }
+    }
+
 
     public Admin update(Admin admin) {
         Admin adminToUpdate = find(admin.getId_user());
