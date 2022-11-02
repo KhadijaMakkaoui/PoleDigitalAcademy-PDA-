@@ -1,6 +1,6 @@
 package entity;
 
-import repository.activiteRepository;
+import repository.implementation.activiteRepository;
 
 public class App {
     public static void main(String[] args) {
