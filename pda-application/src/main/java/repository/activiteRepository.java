@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class activiteRepository {
+public class activiteRepository{
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
@@ -13,7 +13,6 @@ public class activiteRepository {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }
-
     public Activite add(Activite activite) {
         entityManager.getTransaction().begin();
         entityManager.persist(activite);
@@ -46,4 +45,6 @@ public class activiteRepository {
         this.entityManager.close();
         this.emf.close();
     }
+
+
 }
