@@ -30,14 +30,15 @@ public class adminRepository implements repositoryInterface<Admin> {
         Admin adminToUpdate = find(admin.getId_user());
 
         entityManager.getTransaction().begin();
-        adminToUpdate.setDomaine(admin.setDomaine());
-        adminToUpdate.setEmail(admin.setEmail());
-        adminToUpdate.setNom(admin.setEmail());
-        adminToUpdate.setPrenom(admin.setEmail());
-        adminToUpdate.setPhone(admin.setEmail());
-        adminToUpdate.set(admin.setEmail());
-        adminToUpdate.setEmail(admin.setEmail());
-        adminToUpdate.setEmail(admin.setEmail());
+        adminToUpdate.setDomaine(admin.getDomaine());
+        adminToUpdate.setEmail(admin.getEmail());
+        adminToUpdate.setNom(admin.getNom());
+        adminToUpdate.setPrenom(admin.getPrenom());
+        adminToUpdate.setPhone(admin.getPhone());
+        adminToUpdate.setRole(admin.getRole());
+        adminToUpdate.setEtat(admin.getEtat());
+        adminToUpdate.setLogin(admin.getLogin());
+        adminToUpdate.setPassword(admin.getPassword());
         entityManager.getTransaction().commit();
 
         return adminToUpdate;
