@@ -1,11 +1,12 @@
-package repository;
+package repository.implementation;
 
 import entity.Activite;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import repository.repositoryInterface;
 
-public class activiteRepository{
+public class activiteRepository implements repositoryInterface<Activite> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 

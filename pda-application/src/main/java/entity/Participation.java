@@ -9,11 +9,12 @@ import java.util.List;
 public class Participation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @Column(name = "id_participation", nullable = false)
+    private int id_participation;
 
     @Column(name = "present")
     private boolean present;
+
 
     @ManyToOne
     Activite activite;
@@ -21,13 +22,36 @@ public class Participation {
     @ManyToOne
     Participant participant;
 
-    public Long getId() {
-        return id;
+    public boolean isPresent() {
+        return present;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setPresent(boolean present) {
+        this.present = present;
     }
 
-    // objet activité et participant annotaion
+    public Activite getActivite() {
+        return activite;
+    }
+
+    public void setActivite(Activite activite) {
+        this.activite = activite;
+    }
+
+    public Participant getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(Participant participant) {
+        this.participant = participant;
+    }
+
+    public int getId() {
+        return id_participation;
+    }
+
+    public void setId(int id) {
+        this.id_participation = id;
+    }
+
 }

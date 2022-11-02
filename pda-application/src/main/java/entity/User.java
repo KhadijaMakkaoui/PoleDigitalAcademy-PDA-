@@ -25,6 +25,14 @@ public abstract class User {
     @Column(name = "domaine", length = 150)
     private String domaine;
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Enumerated(EnumType.STRING)
     private Role role;
     public int getId_user() {
