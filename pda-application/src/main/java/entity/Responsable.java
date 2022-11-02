@@ -4,9 +4,11 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import java.util.List;
+
 @Entity
 @Table(name = "responsable")
-public class Responsable {
+public class Responsable extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_respo", nullable = false)
@@ -26,9 +28,8 @@ public class Responsable {
         this.id_respo = id_respo;
     }
 
-
-    // listDesActivites needs to be implemented with hibernate annotation
-
+    @OneToMany(mappedBy = "responsable")
+    List<Activite> activites;
 
     public Etat getEtat() {
         return etat;
