@@ -1,4 +1,4 @@
-package service.implementation;
+package repository.implementation;
 
 import entity.Exercice;
 import jakarta.persistence.EntityManager;
@@ -6,11 +6,11 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import repository.IRepository;
 
-public class exerciceImp implements IRepository<Exercice> {
+public class exerciceRepoImp implements IRepository<Exercice> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public exerciceImp() {
+    public exerciceRepoImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }

@@ -6,11 +6,11 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import repository.IRepository;
 
-public class activiteImp implements IRepository<Activite> {
+public class activiteRepoImp implements IRepository<Activite> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public activiteImp() {
+    public activiteRepoImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }

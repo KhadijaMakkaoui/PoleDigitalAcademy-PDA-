@@ -1,4 +1,4 @@
-package service.implementation;
+package repository.implementation;
 
 import entity.Participant;
 import jakarta.persistence.EntityManager;
@@ -6,11 +6,11 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import repository.IRepository;
 
-public class participantImp implements IRepository<Participant> {
+public class participantRepoImp implements IRepository<Participant> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public participantImp() {
+    public participantRepoImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }
