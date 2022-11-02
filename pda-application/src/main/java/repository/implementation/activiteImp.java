@@ -14,7 +14,6 @@ public class activiteImp implements IRepository<Activite> {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }
-
     public Activite add(Activite activite) {
         entityManager.getTransaction().begin();
         entityManager.persist(activite);
@@ -47,4 +46,6 @@ public class activiteImp implements IRepository<Activite> {
         this.entityManager.close();
         this.emf.close();
     }
+
+
 }
