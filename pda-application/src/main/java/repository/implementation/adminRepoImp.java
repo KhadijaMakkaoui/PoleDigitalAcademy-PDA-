@@ -31,18 +31,40 @@ public class adminRepoImp implements IRepository<Admin> {
     }
 
     public boolean findByLogin(String Login) {
-        boolean exist = false;
         try {
             entityManager.getTransaction().begin();
-            Query query = (Query) entityManager.createQuery("Select id from Admin where login =" + Login);
-            // int admin = (int) query.getSingleResult();
+            Query query = (Query) entityManager.createQuery("Select id from Admin where login ='" + Login+"'");
+            int admin = (int) query.getSingleResult();
             entityManager.getTransaction().commit();
-            exist = (boolean) query.getSingleResult();
-            return exist;
+            if(admin>0)
+                return true;
+            else {
+                return false;
+            }
         } catch (Exception e) {
             System.out.println(e);
-            return exist;
+            return false;
         }
+    }
+    public boolean auth(String Login,String Password) {
+        if(findByLogin(Login)){
+            try {
+                entityManager.getTransaction().begin();
+                Query query = (Query) entityManager.createQuery("Select id from Admin WHERE password ='" + Password+"' AND login= '" + Login+"'");
+                int admin = (int) query.getSingleResult();
+                entityManager.getTransaction().commit();
+                if(admin>0)
+                    return true;
+
+            } catch (Exception e) {
+                System.out.println(e);
+
+            }
+            return false;
+        }else {
+            return false;
+        }
+
     }
 
 

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "admin")
 public class Admin extends User {
 
-    @Column(name = "login", length = 150)
+    @Column(name = "login",unique = true, length = 150)
     private String login;
 
     @Column(name = "password", length = 150)
