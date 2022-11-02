@@ -9,10 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "responsable")
 public class Responsable extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_respo", nullable = false)
-    private Long id_respo;
+
 
     @Enumerated(EnumType.STRING)
     private Etat etat;
@@ -20,13 +17,7 @@ public class Responsable extends User {
     @Enumerated(EnumType.STRING)
     private TypeResponsable type;
 
-    public Long getId_respo() {
-        return id_respo;
-    }
 
-    public void setId_respo(Long id_respo) {
-        this.id_respo = id_respo;
-    }
 
     @OneToMany(mappedBy = "responsable")
     List<Activite> activites;
