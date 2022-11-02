@@ -5,5 +5,4 @@ public interface IService<T> {
     public T find(int id);
     public T update(T o);
     public void delete(T o);
-    public void close();
 }
