@@ -1,16 +1,16 @@
-package repository.implementation;
+package service.implementation;
 
 import entity.Exercice;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import repository.repositoryInterface;
+import repository.IRepository;
 
-public class exerciceRepository implements repositoryInterface<Exercice> {
+public class exerciceImp implements IRepository<Exercice> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public exerciceRepository() {
+    public exerciceImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }

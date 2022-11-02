@@ -4,13 +4,13 @@ import entity.Participation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import repository.repositoryInterface;
+import repository.IRepository;
 
-public class participationRepository implements repositoryInterface<Participation> {
+public class participationImp implements IRepository<Participation> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public participationRepository() {
+    public participationImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }

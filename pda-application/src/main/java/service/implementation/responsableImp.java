@@ -1,16 +1,16 @@
-package repository.implementation;
+package service.implementation;
 
 import entity.Responsable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import repository.repositoryInterface;
+import repository.IRepository;
 
-public class responsableRepository implements repositoryInterface<Responsable> {
+public class responsableImp implements IRepository<Responsable> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public responsableRepository() {
+    public responsableImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }

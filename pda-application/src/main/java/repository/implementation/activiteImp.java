@@ -4,13 +4,13 @@ import entity.Activite;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import repository.repositoryInterface;
+import repository.IRepository;
 
-public class activiteRepository implements repositoryInterface<Activite> {
+public class activiteImp implements IRepository<Activite> {
     private EntityManager entityManager;
     private EntityManagerFactory emf;
 
-    public activiteRepository() {
+    public activiteImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.emf.createEntityManager();
     }
