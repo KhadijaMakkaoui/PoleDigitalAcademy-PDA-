@@ -33,8 +33,8 @@ public class Activite {
     @OneToMany(mappedBy = "activite")
     List<Participation> participations;
 
-
-    // need to add responsable object with annotations
+    @ManyToOne
+    Responsable responsable;
 
     public int getId_activite() {
         return id_activite;

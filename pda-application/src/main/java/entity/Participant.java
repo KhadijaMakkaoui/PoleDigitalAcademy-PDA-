@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "participant")
-public class Participant {
+public class Participant extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_p", nullable = false)

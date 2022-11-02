@@ -1,10 +1,8 @@
 package entity;
 
 import jakarta.persistence.*;
-
-@Entity
-@Table(name = "users")
-public class User {
+@MappedSuperclass
+public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user", nullable = false)
