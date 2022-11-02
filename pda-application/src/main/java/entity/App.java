@@ -1,11 +1,7 @@
 package entity;
 
-<<<<<<< HEAD
 import repository.implementation.activiteImp;
-=======
-import repository.implementation.activiteRepository;
-import repository.implementation.adminRepository;
->>>>>>> fbe281d3842df511c97cb06e662d5a9ab60318a0
+import repository.implementation.adminImp;
 
 public class App {
     public static void main(String[] args) {
@@ -19,7 +15,7 @@ public class App {
         Admin admin = new Admin();
         admin.setNom("khadija");
 
-        adminRepository repA = new adminRepository();
+        adminImp repA = new adminImp();
         repA.add(admin);
         System.out.println("added Admin"+ admin.toString());
     }
