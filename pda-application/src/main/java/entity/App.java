@@ -15,8 +15,12 @@ public class App {
         Admin admin = new Admin();
         admin.setNom("khadija");
 
+
+
+
         adminRepoImp repA = new adminRepoImp();
         repA.add(admin);
+        repA.findByLogin();
         System.out.println("added Admin"+ admin.toString());
     }
 }
