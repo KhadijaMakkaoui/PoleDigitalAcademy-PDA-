@@ -24,8 +24,9 @@ public abstract class User {
 
     @Column(name = "domaine", length = 150)
     private String domaine;
-   //@ManyToOne
-    //Role role;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
     public int getId_user() {
         return id_user;
     }
