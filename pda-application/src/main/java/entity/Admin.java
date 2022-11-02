@@ -5,10 +5,6 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "admin")
 public class Admin extends User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
     @Column(name = "login", length = 150)
     private String login;
@@ -19,13 +15,7 @@ public class Admin extends User {
     @Enumerated(EnumType.STRING)
     private Etat etat;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLogin() {
         return login;
