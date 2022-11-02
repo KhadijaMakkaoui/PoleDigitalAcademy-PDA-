@@ -13,14 +13,14 @@ public class App {
         System.out.println("added activite"+ activite.toString());
 
         Admin admin = new Admin();
-        admin.setNom("khadija");
-
+        admin.setLogin("khadija");
+        admin.setPassword("123");
 
 
 
         adminRepoImp repA = new adminRepoImp();
         repA.add(admin);
-        repA.findByLogin();
-        System.out.println("added Admin"+ admin.toString());
+
+        System.out.println(repA.auth("khadija","123"));
     }
 }
