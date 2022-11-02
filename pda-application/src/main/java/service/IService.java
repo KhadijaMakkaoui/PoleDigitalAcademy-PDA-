@@ -1,8 +1,6 @@
-package repository;
+package service;
 
-import entity.Activite;
-
-public interface repositoryInterface<T> {
+public interface IService<T> {
     public T add(T o);
     public T find(int id);
     public T update(T o);
