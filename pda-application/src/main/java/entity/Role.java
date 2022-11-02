@@ -13,8 +13,8 @@ public class Role {
     private int id_role;
     @Column(name = "role", length = 150)
     private String role;
-    @OneToMany(mappedBy = "role")
-    List<User> users;
+    //@OneToMany(mappedBy = "role")
+    //List<User> users;
     public int getId() {
         return id_role;
     }

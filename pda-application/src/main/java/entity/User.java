@@ -1,6 +1,9 @@
 package entity;
 
 import jakarta.persistence.*;
+//@Entity
+//@Table(name = "user")
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
 public abstract class User {
     @Id
@@ -21,8 +24,8 @@ public abstract class User {
 
     @Column(name = "domaine", length = 150)
     private String domaine;
-   @ManyToOne
-    Role role;
+   //@ManyToOne
+    //Role role;
     public int getId_user() {
         return id_user;
     }
