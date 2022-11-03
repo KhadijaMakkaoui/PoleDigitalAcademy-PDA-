@@ -32,7 +32,7 @@
 
 					<div class="signin-form">
 						<h2 class="form-title">Sign up</h2>
-						<form method="" action="" class="register-form"
+						<form method="POST" action="login" class=""
 							id="login-form">
 							<div class="form-group">
 								<label for="username"><i
@@ -81,7 +81,7 @@
 	<script type="text/javascript">
 		var status = document.getElementById("status").value;
 		if (status=="failed") {
-			swal("Sorry","Wrong password or email","failed"')
+			swal("Sorry","Wrong password or email","failed");
 		}
 	</script>
 </body>

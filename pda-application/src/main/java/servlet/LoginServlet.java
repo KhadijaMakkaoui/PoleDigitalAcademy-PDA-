@@ -7,11 +7,10 @@ import service.implementation.adminServiceImp;
 
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", value = "/LoginServlet")
+@WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     @Override
@@ -20,23 +19,26 @@ public class LoginServlet extends HttpServlet {
         try {
             String login = request.getParameter("username");
             String password = request.getParameter("password");
+
             HttpSession session = request.getSession();
             RequestDispatcher dispatcher = null;
 
-            if (login != null && password != null) {
+            //if (login != null && password != null) {
                 adminServiceImp asi = new adminServiceImp();
                 boolean asicon = asi.auth(login, password);
-                if (asicon) {
+            dispatcher = request.getRequestDispatcher("HomeServlet");
+
+            if (asicon) {
                     session.setAttribute("login", login);
-                    dispatcher = request.getRequestDispatcher("index.jsp");
+
                 } else {
                     session.setAttribute("status", "failed");
-                    dispatcher = request.getRequestDispatcher("login.jsp");
                 }
-            } else {
+            /*} else {
                 session.setAttribute("status", "failed");
-                dispatcher = request.getRequestDispatcher("login.jsp");
-            }
+                response.sendRedirect("home");
+            }*/
+
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
