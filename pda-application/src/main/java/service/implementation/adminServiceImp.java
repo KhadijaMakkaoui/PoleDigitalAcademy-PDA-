@@ -6,6 +6,8 @@ import service.IService;
 
 public class adminServiceImp implements IService<Admin> {
     private adminRepoImp repo = new adminRepoImp();
+    // needs to be added to interface
+    public boolean auth(String Login,String Password) {return repo.auth(Login, Password);}
     @Override
     public Admin add(Admin admin) {return repo.add(admin);}
     @Override
