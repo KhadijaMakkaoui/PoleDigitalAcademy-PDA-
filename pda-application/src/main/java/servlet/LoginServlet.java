@@ -1,5 +1,6 @@
 package servlet;
 
+import entity.Admin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -15,7 +16,11 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        Admin admin = new Admin();
+        //admin.setLogin("khadija");
+        //admin.setPassword("111");
+        adminServiceImp asi = new adminServiceImp();
+        //asi.add(admin);
         try {
             String login = request.getParameter("username");
             String password = request.getParameter("password");
@@ -24,16 +29,18 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = null;
 
             //if (login != null && password != null) {
-                adminServiceImp asi = new adminServiceImp();
                 boolean asicon = asi.auth(login, password);
-            dispatcher = request.getRequestDispatcher("HomeServlet");
 
-            if (asicon) {
+
+            if (asicon==true) {
                     session.setAttribute("login", login);
+                    dispatcher = request.getRequestDispatcher("HomeServlet");
 
                 } else {
                     session.setAttribute("status", "failed");
-                }
+
+
+            }
             /*} else {
                 session.setAttribute("status", "failed");
                 response.sendRedirect("home");
