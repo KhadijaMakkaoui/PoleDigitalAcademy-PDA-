@@ -25,7 +25,8 @@ public class Exercice {
     private Status status;
 
     //needs to add object activite
-
+    @ManyToOne
+    Activite activite;
 
     public int getId_exercice() {
         return id_exercice;
