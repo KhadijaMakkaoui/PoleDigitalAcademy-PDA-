@@ -1,14 +1,18 @@
 package repository.implementation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import entity.Exercice;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import repository.IRepository;
 
 public class exerciceRepoImp implements IRepository<Exercice> {
-    private EntityManager entityManager;
-    private EntityManagerFactory emf;
+    public EntityManager entityManager;
+    public EntityManagerFactory emf;
 
     public exerciceRepoImp() {
         this.emf = Persistence.createEntityManagerFactory("default");
@@ -20,6 +24,13 @@ public class exerciceRepoImp implements IRepository<Exercice> {
         entityManager.persist(exercice);
         entityManager.getTransaction().commit();
         return exercice;
+    }
+    
+    
+    @SuppressWarnings("unchecked")
+	public List<Exercice> getAllExercice() {
+        Query query = entityManager.createQuery("from exercice");
+        return query.getResultList();
     }
 
     public Exercice find(int id) {
@@ -52,3 +63,14 @@ public class exerciceRepoImp implements IRepository<Exercice> {
         this.emf.close();
     }
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -51,48 +51,5 @@ public class ExerciceServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-    	
-        /*try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            String dateDeb = request.getParameter("dateDebut");
-            Date debut = sdf.parse(dateDeb);
-
-            String dateFin = request.getParameter("dateFin");
-            Date fin = sdf.parse(dateFin);
-
-            String annee = request.getParameter("annee");
-            String status =request.getParameter("status");
-
-            Exercice exercice=new Exercice();
-            exercice.setAnnee(annee);
-
-            exercice.setStatus(Status.valueOf(status));
-
-            exercice.setDate_debut(debut);
-            exercice.setDate_fin(fin);
-            Activite a=new Activite();
-            exercice.setActivite(a);
-
-            
-            */
-
-            
-
-          /* dispatcher = request.getRequestDispatcher("HomeServlet");
-           if (added.getId_exercice()>0) {
-
-
-            } else {
-               session.setAttribute("status", "failed");
-
-
-            }
-                session.setAttribute("status", "failed");
-                response.sendRedirect("home");
-
-        } catch (Exception e) {
-          e.printStackTrace();
-        }*/
     }
 }
