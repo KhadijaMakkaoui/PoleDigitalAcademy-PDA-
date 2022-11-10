@@ -29,7 +29,7 @@ public class exerciceRepoImp implements IRepository<Exercice> {
     
     @SuppressWarnings("unchecked")
 	public List<Exercice> getAllExercice() {
-        Query query = entityManager.createQuery("from exercice");
+        Query query = entityManager.createNativeQuery("select * from exercice", Exercice.class);
         return query.getResultList();
     }
 

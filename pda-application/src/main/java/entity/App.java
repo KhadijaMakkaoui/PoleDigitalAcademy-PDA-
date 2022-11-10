@@ -16,7 +16,8 @@ import repository.implementation.exerciceRepoImp;
 
 
 public class App {
-    public static void main(String[] args) {
+    @SuppressWarnings("unchecked")
+	public static void main(String[] args) {
         //Activite activite = new Activite();
         //activite.setTitre("testing");
 
@@ -92,9 +93,17 @@ public class App {
 		*/
    
     	
-    	exerciceRepoImp ex = new exerciceRepoImp();
-		Query query = ex.entityManager.createQuery("select annee from exercice");
-		System.out.println(query);
+    	exerciceServiceImp ex = new exerciceServiceImp();
+    	List<Exercice> exlist = null;
+		
+		
+		
+		exlist = ex.getAllExercice();
+		for(Exercice exercice : exlist) {
+			System.out.println(exercice);
+		}
+		
+		
 		
 		
 		
