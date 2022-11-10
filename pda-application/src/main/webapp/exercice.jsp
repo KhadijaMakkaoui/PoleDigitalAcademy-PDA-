@@ -208,7 +208,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-sm-12 col-xl-6" id="add">
+                <div id="add">
                     <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Nouveau exercice</h6>
                         <div class="form-floating mb-3">
@@ -229,17 +229,14 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" id="status"
                                     aria-label="Floating label select example" name="status">
-                                <option selected>--Veuiller choisir--</option>
-                                <option value="encours">En cours</option>
-                                <option value="terminer">Terminer</option>
+                                <option selected value="ENCOURS">En cours</option>
+                                <option value="TERMINER">Terminer</option>
                             </select>
                             <label for="status">Status</label>
                         </div>
                         <div class="mx-auto w-50">
                             <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter</button>
-
                         </div>
-
                     </form>
                 </div>
             </div>
