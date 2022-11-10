@@ -23,10 +23,38 @@ public class ExerciceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try {
-            exerciceServiceImp ex = new exerciceServiceImp();
-           /* SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        	exerciceServiceImp ex = new exerciceServiceImp();
+            RequestDispatcher dispatcher = null;
+            Exercice exercice=new Exercice();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+
+            String dateDeb = request.getParameter("dateDebut");
+            Date debut = sdf.parse(dateDeb);
+
+            String dateFin = request.getParameter("dateFin");
+            Date fin = sdf.parse(dateFin);
+            
+            String ann = request.getParameter("annee");
+            String stat = request.getParameter("status");
+            
+            exercice.setDate_debut(debut);
+            exercice.setDate_fin(fin);
+            exercice.setAnnee(ann);
+            exercice.setStatus(Status.valueOf(stat));
+
+            Exercice added = ex.add(exercice);
+            
+            dispatcher = request.getRequestDispatcher("exercice.jsp");
+            dispatcher.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+    	
+        /*try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String dateDeb = request.getParameter("dateDebut");
             Date debut = sdf.parse(dateDeb);
 
@@ -46,27 +74,25 @@ public class ExerciceServlet extends HttpServlet {
             Activite a=new Activite();
             exercice.setActivite(a);
 
-            RequestDispatcher dispatcher = null;*/
+            
+            */
 
-            Exercice exercice=new Exercice();
-            exercice.setAnnee("anne");
-            Exercice added = ex.add(exercice);
+            
 
-           //dispatcher = request.getRequestDispatcher("HomeServlet");
+          /* dispatcher = request.getRequestDispatcher("HomeServlet");
            if (added.getId_exercice()>0) {
 
 
             } else {
-               // session.setAttribute("status", "failed");
+               session.setAttribute("status", "failed");
 
 
             }
-                //session.setAttribute("status", "failed");
-                //response.sendRedirect("home");
+                session.setAttribute("status", "failed");
+                response.sendRedirect("home");
 
-           // dispatcher.forward(request, response);
         } catch (Exception e) {
           e.printStackTrace();
-        }
+        }*/
     }
 }

@@ -30,6 +30,10 @@ public class App {
         System.out.println(asicon);
 
          */
+    	
+    	
+    	
+    	/*
         exerciceServiceImp ex = new exerciceServiceImp();
 
 
@@ -40,5 +44,31 @@ public class App {
 
         Exercice added = ex.add(exercice);
         System.out.println(added);
+        */
+    	try {
+        	exerciceServiceImp ex = new exerciceServiceImp();
+            RequestDispatcher dispatcher = null;
+            Exercice exercice=new Exercice();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+
+            String dateDeb = "2010-01-10";
+            Date debut = sdf.parse(dateDeb);
+
+            String dateFin = "2010-01-20";
+            Date fin = sdf.parse(dateFin);
+            
+            String ann = "2020";
+            String stat = "ENCOURS";
+            
+            exercice.setDate_debut(debut);
+            exercice.setDate_fin(fin);
+            exercice.setAnnee(ann);
+            exercice.setStatus(Status.valueOf(stat));
+
+            Exercice added = ex.add(exercice);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 }
