@@ -185,33 +185,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox"></td>
-                                <td>01 Jan 2045</td>
-                                <td>INV-0123</td>
-                                <td>Jhon Doe</td>
-                                <td>$123</td>
-                                <td>Paid</td>
-                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox"></td>
-                                <td>01 Jan 2045</td>
-                                <td>INV-0123</td>
-                                <td>Jhon Doe</td>
-                                <td>$123</td>
-                                <td>Paid</td>
-                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox"></td>
-                                <td>01 Jan 2045</td>
-                                <td>INV-0123</td>
-                                <td>Jhon Doe</td>
-                                <td>$123</td>
-                                <td>Paid</td>
-                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                            </tr>
+
                             <tr>
                                 <td><input class="form-check-input" type="checkbox"></td>
                                 <td>01 Jan 2045</td>
@@ -235,34 +209,38 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-xl-6" id="add">
-                    <div class="bg-light rounded h-100 p-4">
+                    <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Nouveau exercice</h6>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput"
-                                   placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
+                            <input type="date" class="form-control" name="dateDebut" id="dateDebut"
+                                   >
+                            <label for="dateDebut">Date debut</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword"
-                                   placeholder="Password">
-                            <label for="floatingPassword">Password</label>
+                            <input type="date" class="form-control" name="dateFin" id="dateFin"
+                            >
+                            <label for="dateFin">Date fin</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <input type="text" class="form-control" id="annee"
+                                   placeholder="Annee" name="annee">
+                            <label for="annee">Annee</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="status"
+                                    aria-label="Floating label select example" name="status">
+                                <option selected>--Veuiller choisir--</option>
+                                <option value="encours">En cours</option>
+                                <option value="terminer">Terminer</option>
                             </select>
-                            <label for="floatingSelect">Works with selects</label>
+                            <label for="status">Status</label>
                         </div>
-                        <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here"
-                                          id="floatingTextarea" style="height: 150px;"></textarea>
-                            <label for="floatingTextarea">Comments</label>
+                        <div class="mx-auto w-50">
+                            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter</button>
+
                         </div>
-                    </div>
+
+                    </form>
                 </div>
             </div>
             <!-- Recent Sales End -->
