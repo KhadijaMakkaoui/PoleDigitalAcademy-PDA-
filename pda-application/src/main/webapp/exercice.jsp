@@ -164,64 +164,87 @@
 
 
             <!-- Chart Start -->
+            <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Single Line Chart</h6>
-                            <canvas id="line-chart"></canvas>
-                        </div>
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Exercies</h6>
+                        <a href="#add">Nouveau exercice</a>
                     </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Multiple Line Chart</h6>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Single Bar Chart</h6>
-                            <canvas id="bar-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Multiple Bar Chart</h6>
-                            <canvas id="worldwide-sales"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Pie Chart</h6>
-                            <canvas id="pie-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Doughnut Chart</h6>
-                            <canvas id="doughnut-chart"></canvas>
-                        </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                            <tr class="text-dark">
+                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Invoice</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td>01 Jan 2045</td>
+                                <td>INV-0123</td>
+                                <td>Jhon Doe</td>
+                                <td>$123</td>
+                                <td>Paid</td>
+                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                            </tr>
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox"></td>
+                                <td>01 Jan 2045</td>
+                                <td>INV-0123</td>
+                                <td>Jhon Doe</td>
+                                <td>$123</td>
+                                <td>Paid</td>
+                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-            <!-- Chart End -->
-
-
-            <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-light rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                <div class="col-sm-12 col-xl-6" id="add">
+                    <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Nouveau exercice</h6>
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" name="dateDebut" id="dateDebut"
+                                   >
+                            <label for="dateDebut">Date debut</label>
                         </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" name="dateFin" id="dateFin"
+                            >
+                            <label for="dateFin">Date fin</label>
                         </div>
-                    </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="annee"
+                                   placeholder="Annee" name="annee">
+                            <label for="annee">Annee</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="status"
+                                    aria-label="Floating label select example" name="status">
+                                <option selected>--Veuiller choisir--</option>
+                                <option value="encours">En cours</option>
+                                <option value="terminer">Terminer</option>
+                            </select>
+                            <label for="status">Status</label>
+                        </div>
+                        <div class="mx-auto w-50">
+                            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter</button>
+
+                        </div>
+
+                    </form>
                 </div>
             </div>
-            <!-- Footer End -->
+            <!-- Recent Sales End -->
+
         </div>
         <!-- Content End -->
 

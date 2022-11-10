@@ -36,6 +36,9 @@ public class Activite {
     @ManyToOne
     Responsable responsable;
 
+    @OneToMany(mappedBy = "activite")
+    List<Exercice> exercices;
+
     public int getId_activite() {
         return id_activite;
     }
@@ -90,6 +93,30 @@ public class Activite {
 
     public void setEtat(Etat etat) {
         this.etat = etat;
+    }
+
+    public List<Participation> getParticipations() {
+        return participations;
+    }
+
+    public void setParticipations(List<Participation> participations) {
+        this.participations = participations;
+    }
+
+    public Responsable getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(Responsable responsable) {
+        this.responsable = responsable;
+    }
+
+    public List<Exercice> getExercices() {
+        return exercices;
+    }
+
+    public void setExercices(List<Exercice> exercices) {
+        this.exercices = exercices;
     }
 
     @Override

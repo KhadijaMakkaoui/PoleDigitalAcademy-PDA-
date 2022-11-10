@@ -20,12 +20,11 @@ public class Exercice {
     @Column(name = "date_fin")
     private Date date_fin;
 
-    // enum change to string annotations
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    //needs to add object activite
-
+    @ManyToOne
+    Activite activite;
 
     public int getId_exercice() {
         return id_exercice;
@@ -65,6 +64,14 @@ public class Exercice {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public Activite getActivite() {
+        return activite;
+    }
+
+    public void setActivite(Activite activite) {
+        this.activite = activite;
     }
 
     @Override
