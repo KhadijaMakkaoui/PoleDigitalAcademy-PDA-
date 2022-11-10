@@ -1,3 +1,12 @@
+<%
+	if(session.getAttribute("login")==null){
+		response.sendRedirect("login.jsp");
+	}
+%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="entity.Exercice"%>
+<%@ page import="service.implementation.exerciceServiceImp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +63,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><%= session.getAttribute("login") %></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -150,11 +159,9 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><%= session.getAttribute("login") %></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
-                            <a href="#" class="dropdown-item">Settings</a>
                             <a href="#" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
@@ -176,34 +183,29 @@
                             <thead>
                             <tr class="text-dark">
                                 <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Invoice</th>
-                                <th scope="col">Customer</th>
-                                <th scope="col">Amount</th>
+                                <th scope="col">Annee</th>
+                                <th scope="col">Date Debut</th>
+                                <th scope="col">date Fin</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-
+							<%
+							exerciceServiceImp ex = new exerciceServiceImp();
+							ArrayList <Exercice> exList = ex.getAllExercice();
+							for(Exercice exercice : exList) {
+							%>
                             <tr>
                                 <td><input class="form-check-input" type="checkbox"></td>
-                                <td>01 Jan 2045</td>
-                                <td>INV-0123</td>
-                                <td>Jhon Doe</td>
-                                <td>$123</td>
-                                <td>Paid</td>
-                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
+                                <td><%=  exercice.getAnnee() %></td>
+                                <td><%=  exercice.getDate_debut() %></td>
+                                <td><%=  exercice.getDate_fin() %></td>
+                                <td><%=  exercice.getStatus() %></td>
+                                <td><a class="btn btn-sm btn-primary" href="">Modifier</a></td>
+	                            <td><a class="btn btn-sm btn-primary" href="">Supprimer</a></td>
                             </tr>
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox"></td>
-                                <td>01 Jan 2045</td>
-                                <td>INV-0123</td>
-                                <td>Jhon Doe</td>
-                                <td>$123</td>
-                                <td>Paid</td>
-                                <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                            </tr>
+                            <%}%>
                             </tbody>
                         </table>
                     </div>

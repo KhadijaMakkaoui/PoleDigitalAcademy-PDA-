@@ -1,3 +1,8 @@
+<%
+	if(session.getAttribute("login")==null){
+		response.sendRedirect("login.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +59,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><%= session.getAttribute("login") %></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -85,7 +90,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                 <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                <span class="d-none d-lg-inline-flex">John Doe</span>
+                                <span class="d-none d-lg-inline-flex"><%= session.getAttribute("login") %></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                                 <a href="#" class="dropdown-item">Log Out</a>

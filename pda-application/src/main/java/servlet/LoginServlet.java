@@ -24,23 +24,14 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             RequestDispatcher dispatcher = null;
 
-            //if (login != null && password != null) {
-                boolean asicon = asi.auth(login, password);
-
-
+            boolean asicon = asi.auth(login, password);
             if (asicon==true) {
                     session.setAttribute("login", login);
                     dispatcher = request.getRequestDispatcher("HomeServlet");
 
                 } else {
                     session.setAttribute("status", "failed");
-
-
             }
-            /*} else {
-                session.setAttribute("status", "failed");
-                response.sendRedirect("home");
-            }*/
 
             dispatcher.forward(request, response);
         } catch (Exception e) {

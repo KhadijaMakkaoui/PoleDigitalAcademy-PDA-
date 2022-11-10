@@ -1,13 +1,19 @@
 package entity;
 
-import jakarta.servlet.RequestDispatcher;
-import repository.implementation.activiteRepoImp;
-import repository.implementation.adminRepoImp;
-import service.implementation.adminServiceImp;
 import service.implementation.exerciceServiceImp;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import entity.Exercice;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+
+import repository.implementation.exerciceRepoImp;
+
+
+
 
 public class App {
     public static void main(String[] args) {
@@ -44,7 +50,7 @@ public class App {
 
         Exercice added = ex.add(exercice);
         System.out.println(added);
-        */
+        
     	try {
         	exerciceServiceImp ex = new exerciceServiceImp();
             RequestDispatcher dispatcher = null;
@@ -70,5 +76,37 @@ public class App {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-    }
+		
+		*
+		ArrayList <Exercice> exList = ex.getAllExercice();
+		for(Exercice exercice : exList) {
+			
+		}*
+		*
+		exerciceServiceImp ex = new exerciceServiceImp();
+		Collection exList = (Collection) ex.getAllExercice();
+		
+		if(exList != null) {
+			System.out.println("yes");
+		}*
+		*/
+   
+    	
+    	exerciceRepoImp ex = new exerciceRepoImp();
+		Query query = ex.entityManager.createQuery("select annee from exercice");
+		System.out.println(query);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+	}
 }
