@@ -176,13 +176,12 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Exercies</h6>
-                        <a href="#add">Nouveau exercice</a>
+                        <a href="#addupdate">Nouveau exercice</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                             <tr class="text-dark">
-                                <th scope="col"><input class="form-check-input" type="checkbox"></th>
                                 <th scope="col">Annee</th>
                                 <th scope="col">Date Debut</th>
                                 <th scope="col">date Fin</th>
@@ -204,57 +203,26 @@
                                 <td><%=  exercice.getDate_debut() %></td>
                                 <td><%=  exercice.getDate_fin() %></td>
                                 <td><%=  exercice.getStatus() %></td>
-                                <td><a class="update btn btn-sm btn-primary" href="#update">Modifier</a><a class="btn btn-sm btn-primary" href="delete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="delete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div id="add">
+                <div id="addupdate">
                     <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
                         <h6 class="mb-4">Nouveau exercice</h6>
+                        <div class="form-floating mb-3 d-none">
+                            <input type="text" class="id form-control" name="id" id="" value="0">
+                        </div>
                         <div class="form-floating mb-3">
                             <input type="date" class="form-control" name="dateDebut" id="dateDebut"
-                                   >
-                            <label for="dateDebut">Date debut</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="dateFin" id="dateFin"
-                            >
-                            <label for="dateFin">Date fin</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="annee"
-                                   placeholder="Annee" name="annee">
-                            <label for="annee">Annee</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="status"
-                                    aria-label="Floating label select example" name="status">
-                                <option selected value="ENCOURS">En cours</option>
-                                <option value="TERMINER">Terminer</option>
-                            </select>
-                            <label for="status">Status</label>
-                        </div>
-                        <div class="mx-auto w-50">
-                            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter</button>
-                        </div>
-                    </form>
-                </div>
-                <div id="update">
-                    <form method="post" action="update" class="bg-light rounded h-100 p-4">
-                        <h6 class="mb-4">Nouveau exercice</h6>
-                        <div class="form-floating mb-3 d-none">
-                            <input type="text" class="id form-control" name="dateDebut" id="dateDebut" value="">
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="dateDebut" id="dateDebut" 
                                    >
                             <label class="dated" for="dateDebut">Date debut</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="dateFin" id="dateFin" 
+                            <input type="date" class="form-control" name="dateFin" id="dateFin"
                             >
                             <label class="datef" for="dateFin">Date fin</label>
                         </div>
@@ -272,10 +240,10 @@
                             <label for="status">Status</label>
                         </div>
                         <div class="mx-auto w-50">
-                            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Modifier</button>
+                            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
                         </div>
                     </form>
-                </div>
+                </div> 
             </div>
             <!-- Recent Sales End -->
 
@@ -289,7 +257,7 @@
 
     <!-- JavaScript Libraries -->
     <script type="text/javascript">
-    document.querySelectorAll('.update').forEach(function(btn) {
+    document.querySelectorAll('.addupdate').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             let item = e.target.closest('.item');
             let children = item.children;
@@ -300,11 +268,11 @@
             let datef = children[3].textContent;
             let status = children[4].textContent;
 
-            document.querySelector('#update .id').value = id;
-            document.querySelector('#update .annee').value = annee;
-            document.querySelector('#update .dated').textContent = dated;
-            document.querySelector('#update .datef').textContent = datef;
-            document.querySelector('#update .status').value = status;
+            document.querySelector('#addupdate .id').value = id;
+            document.querySelector('#addupdate .annee').value = annee;
+            document.querySelector('#addupdate .dated').textContent = dated;
+            document.querySelector('#addupdate .datef').textContent = datef;
+            document.querySelector('#addupdate .status').value = status;
 
         })
     })
