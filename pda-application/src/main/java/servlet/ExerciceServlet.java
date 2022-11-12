@@ -14,11 +14,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "ExerciceServlet", urlPatterns = {"/exercice", "/delete", "/update"})
+@WebServlet(name = "ExerciceServlet", urlPatterns = {"/exercice", "/delete"})
 public class ExerciceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String action = request.getServletPath();
     	RequestDispatcher dispatcher = null;
         int id;
         exerciceServiceImp ex = null;
@@ -31,7 +30,7 @@ public class ExerciceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String action = request.getServletPath();
+    	//String action = request.getServletPath();
 
     	try {
             RequestDispatcher dispatcher = null;
@@ -44,10 +43,39 @@ public class ExerciceServlet extends HttpServlet {
 
             String dateFin = null;
             Date fin = null;
-            
+
             String ann = null;
             String stat = null;
-            switch (action) {
+        	id = Integer.parseInt(request.getParameter("id"));
+        	ex = new exerciceServiceImp();
+            exercice=new Exercice();
+            
+            sdf = new SimpleDateFormat("yyyy-MM-dd");
+            dateDeb = request.getParameter("dateDebut");
+            debut = sdf.parse(dateDeb);
+
+            dateFin = request.getParameter("dateFin");
+            fin = sdf.parse(dateFin);
+            
+            ann = request.getParameter("annee");
+            stat = request.getParameter("status");
+            
+            exercice.setDate_debut(debut);
+            exercice.setDate_fin(fin);
+            exercice.setAnnee(ann);
+            exercice.setStatus(Status.valueOf(stat));
+
+            if (id == 0) {
+                Exercice added = ex.add(exercice);				
+			} else {
+                exercice.setId_exercice(id);
+                Exercice updated = ex.update(exercice);
+			}
+            
+            dispatcher = request.getRequestDispatcher("exercice.jsp");
+            dispatcher.forward(request, response);
+            
+            /*switch (action) {
 	            case "/exercice":
 	            	ex = new exerciceServiceImp();
 	                exercice=new Exercice();
@@ -102,7 +130,7 @@ public class ExerciceServlet extends HttpServlet {
 	                dispatcher = request.getRequestDispatcher("exercice.jsp");
 	                dispatcher.forward(request, response);
                     break;
-            }
+            }*/
         } catch (Exception e) {
         	e.printStackTrace();
         }
