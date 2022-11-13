@@ -1,5 +1,5 @@
 package entity;
 
 public enum Role {
-    ADMIN,SUPERADMIN
+    ADMIN,SUPERADMIN,PARTICIPANT,RESPONSABLE
 }

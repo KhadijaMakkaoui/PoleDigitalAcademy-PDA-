@@ -8,11 +8,17 @@ import service.implementation.adminServiceImp;
 
 import java.io.IOException;
 
-@WebServlet(name = "LoginServlet", value = "/login")
+@WebServlet(name = "LoginServlet", urlPatterns = {"/login", "/logout"})
 public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
+        HttpSession session = request.getSession();
+        RequestDispatcher dispatcher = null;
+        String login = null;
+        session.setAttribute("login", login);
+        dispatcher = request.getRequestDispatcher("login.jsp");
+        dispatcher.forward(request, response);
+        }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
