@@ -19,5 +19,5 @@ public class exerciceServiceImp implements IService<Exercice> {
     @Override
     public void delete(Exercice exercice) {repo.delete(exercice);}
     @Override
-    public List<Exercice> getAllExercice() {return repo.getAllExercice();}
+    public List<Exercice> getAll() {return repo.getAll();}
 }

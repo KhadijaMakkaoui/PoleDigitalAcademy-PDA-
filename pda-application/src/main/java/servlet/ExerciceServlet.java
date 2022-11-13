@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "ExerciceServlet", urlPatterns = {"/exercice", "/delete"})
+@WebServlet(name = "ExerciceServlet", urlPatterns = {"/exercice", "/exdelete"})
 public class ExerciceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,6 @@ public class ExerciceServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	//String action = request.getServletPath();
 
     	try {
             RequestDispatcher dispatcher = null;
@@ -75,62 +74,6 @@ public class ExerciceServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("exercice.jsp");
             dispatcher.forward(request, response);
             
-            /*switch (action) {
-	            case "/exercice":
-	            	ex = new exerciceServiceImp();
-	                exercice=new Exercice();
-	                sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-
-	                dateDeb = request.getParameter("dateDebut");
-	                debut = sdf.parse(dateDeb);
-
-	                dateFin = request.getParameter("dateFin");
-	                fin = sdf.parse(dateFin);
-	                
-	                ann = request.getParameter("annee");
-	                stat = request.getParameter("status");
-	                
-	                exercice.setDate_debut(debut);
-	                exercice.setDate_fin(fin);
-	                exercice.setAnnee(ann);
-	                exercice.setStatus(Status.valueOf(stat));
-
-	                Exercice added = ex.add(exercice);
-	                
-	                dispatcher = request.getRequestDispatcher("exercice.jsp");
-	                dispatcher.forward(request, response);
-	                break;
-	             
-                case "/update":
-                    ex = new exerciceServiceImp();
-	                exercice=new Exercice();
-	                
-                	id = Integer.parseInt(request.getParameter("id"));
-
-	                sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-	                dateDeb = request.getParameter("dateDebut");
-	                debut = sdf.parse(dateDeb);
-
-	                dateFin = request.getParameter("dateFin");
-	                fin = sdf.parse(dateFin);
-	                
-	                ann = request.getParameter("annee");
-	                stat = request.getParameter("status");
-	                
-	                exercice.setId_exercice(id);
-	                exercice.setDate_debut(debut);
-	                exercice.setDate_fin(fin);
-	                exercice.setAnnee(ann);
-	                exercice.setStatus(Status.valueOf(stat));
-
-	                Exercice updated = ex.update(exercice);
-	                
-	                dispatcher = request.getRequestDispatcher("exercice.jsp");
-	                dispatcher.forward(request, response);
-                    break;
-            }*/
         } catch (Exception e) {
         	e.printStackTrace();
         }

@@ -12,7 +12,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>PDA</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -55,7 +55,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>PDA</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -83,100 +83,77 @@
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="home.jsp" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control border-0" type="search" placeholder="Search">
-                </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-envelope me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Message</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <span class="d-none d-lg-inline-flex"><%= session.getAttribute("login") %></span>
                             </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <div class="d-flex align-items-center">
-                                    <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                                    <div class="ms-2">
-                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
-                                        <small>15 minutes ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all message</a>
+                            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                                <a href="#" class="dropdown-item">Log Out</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <i class="fa fa-bell me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Notificatin</span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Profile updated</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">New user added</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item">
-                                <h6 class="fw-normal mb-0">Password changed</h6>
-                                <small>15 minutes ago</small>
-                            </a>
-                            <hr class="dropdown-divider">
-                            <a href="#" class="dropdown-item text-center">See all notifications</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><%= session.getAttribute("login") %></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">Log Out</a>
-                        </div>
-                    </div>
-                </div>
             </nav>
             <!-- Navbar End -->
 
 
             <!-- Chart Start -->
+            <!-- Modal addupdate-->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div id="addupdate">
+										    <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
+										        <h6 class="mb-4">Nouveau exercice</h6>
+										        <div class="form-floating mb-3 d-none">
+										            <input type="text" class="id form-control" name="id" id="" value="0">
+										        </div>
+										        <div class="form-floating mb-3">
+										            <input type="date" class="form-control" name="dateDebut" id="dateDebut"
+										                   >
+										            <label class="dated" for="dateDebut">Date debut</label>
+										        </div>
+										        <div class="form-floating mb-3">
+										            <input type="date" class="form-control" name="dateFin" id="dateFin"
+										            >
+										            <label class="datef" for="dateFin">Date fin</label>
+										        </div>
+										        <div class="form-floating mb-3">
+										            <input type="text" class="annee form-control" id="annee"
+										                   placeholder="Annee" name="annee" value="">
+										            <label for="annee">Annee</label>
+										        </div>
+										        <div class="form-floating mb-3">
+										            <select class="status form-select" id="status"
+										                    aria-label="Floating label select example" name="status">
+										                <option selected value="ENCOURS">En cours</option>
+										                <option value="TERMINER">Terminer</option>
+										            </select>
+										            <label for="status">Status</label>
+										        </div>
+										        <div class="mx-auto w-50">
+										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
+										        </div>
+										    </form>
+										</div> 
+                                    </div>
+                                </div>
+                            </div>
+			<!-- Modal addupdate End-->
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Exercies</h6>
-                        <a href="#addupdate">Nouveau exercice</a>
+                        <a href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Nouveau exercice</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -184,7 +161,7 @@
                             <tr class="text-dark">
                                 <th scope="col">Annee</th>
                                 <th scope="col">Date Debut</th>
-                                <th scope="col">date Fin</th>
+                                <th scope="col">Date Fin</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -194,7 +171,7 @@
 							exerciceServiceImp ex = new exerciceServiceImp();
 					    	List<Exercice> exlist = null;
 							
-							exlist = ex.getAllExercice();
+							exlist = ex.getAll();
 							for(Exercice exercice : exlist) {
 							%>
                             <tr class="item">
@@ -203,50 +180,15 @@
                                 <td><%=  exercice.getDate_debut() %></td>
                                 <td><%=  exercice.getDate_fin() %></td>
                                 <td><%=  exercice.getStatus() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="delete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="exdelete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div id="addupdate">
-                    <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
-                        <h6 class="mb-4">Nouveau exercice</h6>
-                        <div class="form-floating mb-3 d-none">
-                            <input type="text" class="id form-control" name="id" id="" value="0">
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="dateDebut" id="dateDebut"
-                                   >
-                            <label class="dated" for="dateDebut">Date debut</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" name="dateFin" id="dateFin"
-                            >
-                            <label class="datef" for="dateFin">Date fin</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="annee form-control" id="annee"
-                                   placeholder="Annee" name="annee" value="">
-                            <label for="annee">Annee</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <select class="status form-select" id="status"
-                                    aria-label="Floating label select example" name="status">
-                                <option selected value="ENCOURS">En cours</option>
-                                <option value="TERMINER">Terminer</option>
-                            </select>
-                            <label for="status">Status</label>
-                        </div>
-                        <div class="mx-auto w-50">
-                            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
-                        </div>
-                    </form>
-                </div> 
             </div>
             <!-- Recent Sales End -->
-
         </div>
         <!-- Content End -->
 
