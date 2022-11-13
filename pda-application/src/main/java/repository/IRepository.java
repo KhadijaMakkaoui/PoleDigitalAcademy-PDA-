@@ -12,5 +12,5 @@ public interface IRepository<T> {
     public T update(T o);
     public void delete(T o);
     public void close();
-	public List<T> getAllExercice();
+	public List<T> getAll();
 }

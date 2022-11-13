@@ -11,5 +11,5 @@ public interface IService<T> {
     public T find(int id);
     public T update(T o);
     public void delete(T o);
-    public List<T> getAllExercice();
+    public List<T> getAll();
 }
