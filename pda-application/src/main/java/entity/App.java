@@ -98,7 +98,7 @@ public class App {
 		
 		
 		
-		exlist = ex.getAllExercice();
+		exlist = ex.getAllExercice().stream().limit(10).collect(Collectors.toList());
 		for(Exercice exercice : exlist) {
 			System.out.println(exercice);
 		}

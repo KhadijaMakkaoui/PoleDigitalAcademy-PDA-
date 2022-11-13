@@ -1,9 +1,13 @@
 package repository.implementation;
 
+import java.util.List;
+
+import entity.Exercice;
 import entity.Participant;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import repository.IRepository;
 
 public class participantRepoImp implements IRepository<Participant> {
@@ -21,6 +25,13 @@ public class participantRepoImp implements IRepository<Participant> {
         entityManager.getTransaction().commit();
         return participant;
     }
+    
+    @SuppressWarnings("unchecked")
+	public List<Participant> getAll() {
+        Query query = entityManager.createNativeQuery("select * from participant", Participant.class);
+        return query.getResultList();
+    }
+
 
     public Participant find(int id) {
         return entityManager.find(Participant.class, id);

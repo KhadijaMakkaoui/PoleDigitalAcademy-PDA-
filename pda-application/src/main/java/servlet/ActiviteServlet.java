@@ -19,10 +19,10 @@ public class ActiviteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	RequestDispatcher dispatcher = null;
         int id;
-        activiteServiceImp ex = null;
+        activiteServiceImp ac = null;
     	id = Integer.parseInt(request.getParameter("id"));
-    	ex = new activiteServiceImp();
-    	ex.delete(ex.find(id));
+    	ac = new activiteServiceImp();
+    	ac.delete(ac.find(id));
     	dispatcher = request.getRequestDispatcher("activite.jsp");
         dispatcher.forward(request, response);
     }

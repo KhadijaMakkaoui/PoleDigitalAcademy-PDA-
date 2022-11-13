@@ -1,9 +1,13 @@
 package repository.implementation;
 
+import java.util.List;
+
+import entity.Participant;
 import entity.Responsable;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import repository.IRepository;
 
 public class responsableRepoImp implements IRepository<Responsable> {
@@ -20,6 +24,12 @@ public class responsableRepoImp implements IRepository<Responsable> {
         entityManager.persist(responsable);
         entityManager.getTransaction().commit();
         return responsable;
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<Responsable> getAll() {
+        Query query = entityManager.createNativeQuery("select * from responsable", Responsable.class);
+        return query.getResultList();
     }
 
     public Responsable find(int id) {

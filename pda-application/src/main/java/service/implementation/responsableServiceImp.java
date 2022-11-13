@@ -1,5 +1,8 @@
 package service.implementation;
 
+import java.util.List;
+
+import entity.Participant;
 import entity.Responsable;
 import repository.implementation.responsableRepoImp;
 import service.IService;
@@ -14,4 +17,6 @@ public class responsableServiceImp implements IService<Responsable> {
     public Responsable update(Responsable responsable) {return repo.update(responsable);}
     @Override
     public void delete(Responsable responsable) {repo.delete(responsable);}
+    @Override
+    public List<Responsable> getAll() {return repo.getAll();}
 }

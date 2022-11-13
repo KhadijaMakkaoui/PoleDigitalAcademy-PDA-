@@ -1,5 +1,8 @@
 package service.implementation;
 
+import java.util.List;
+
+import entity.Exercice;
 import entity.Participant;
 import repository.implementation.participantRepoImp;
 import service.IService;
@@ -14,4 +17,6 @@ public class participantServiceImp implements IService<Participant> {
     public Participant update(Participant exercice) {return repo.update(exercice);}
     @Override
     public void delete(Participant exercice) {repo.delete(exercice);}
+    @Override
+    public List<Participant> getAll() {return repo.getAll();}
 }

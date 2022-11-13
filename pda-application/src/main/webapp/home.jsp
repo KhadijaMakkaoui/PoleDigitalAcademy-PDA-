@@ -3,6 +3,21 @@
 		response.sendRedirect("login.jsp");
 	}
 %>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.stream.Collectors"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ page import="entity.Responsable"%>
+<%@ page import="service.implementation.responsableServiceImp"%>
+
+<%@ page import="entity.Participant"%>
+<%@ page import="service.implementation.participantServiceImp"%>
+
+<%@ page import="entity.Activite"%>
+<%@ page import="service.implementation.activiteServiceImp"%>
+
+<%@ page import="entity.Exercice"%>
+<%@ page import="service.implementation.exerciceServiceImp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,7 +108,7 @@
                                 <span class="d-none d-lg-inline-flex"><%= session.getAttribute("login") %></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                                <a href="#" class="dropdown-item">Log Out</a>
+                                <a href="logout" class="dropdown-item">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -102,41 +117,52 @@
 
 
             <!-- Sale & Revenue Start -->
+            <%
+			responsableServiceImp re = new responsableServiceImp();
+            participantServiceImp pa = new participantServiceImp();
+			activiteServiceImp ac = new activiteServiceImp();
+			exerciceServiceImp ex = new exerciceServiceImp();
+			
+			int numre = re.getAll().size();
+			int numpa = pa.getAll().size();
+			int numac = ac.getAll().size();
+			int numex = ex.getAll().size();
+			%>
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <i class="fa fa-user-tie fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Responsable</p>
+                                <h6 class="mb-0"><%= numre %></h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <i class="fa fa-users fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Sale</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Participant</p>
+                                <h6 class="mb-0"><%= numpa %></h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <i class="fa fa-icons fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Today Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Activite</p>
+                                <h6 class="mb-0"><%= numac %></h6>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <i class="fa fa-thumbtack fa-3x text-primary"></i>
                             <div class="ms-3">
-                                <p class="mb-2">Total Revenue</p>
-                                <h6 class="mb-0">$1234</h6>
+                                <p class="mb-2">Exercice</p>
+                                <h6 class="mb-0"><%= numex %></h6>
                             </div>
                         </div>
                     </div>
@@ -149,71 +175,168 @@
 
 
             <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
+             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
+                        <h6 class="mb-0">Derniers Responsables Ajoutes</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
-                                <tr class="text-dark">
-                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Invoice</th>
-                                    <th scope="col">Customer</th>
-                                    <th scope="col">Amount</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                </tr>
+                            <tr class="text-dark">
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Domaine</th>
+                                <th scope="col">Etat</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Action</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
-                                <tr>
-                                    <td><input class="form-check-input" type="checkbox"></td>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                                </tr>
+							<%
+					    	List<Responsable> relist = null;
+							
+							relist = re.getAll().stream().limit(3).collect(Collectors.toList());
+							for(Responsable responsable : relist) {
+							%>
+                            <tr class="item">
+								<td class="d-none"><%=  responsable.getId_user() %></td>
+                                <td><%=  responsable.getNom() %></td>
+                                <td><%=  responsable.getPrenom() %></td>
+                                <td><%=  responsable.getEmail() %></td>
+                                <td><%=  responsable.getPhone() %></td>
+                                <td><%=  responsable.getDomaine() %></td>
+                                <td><%=  responsable.getEtat() %></td>
+                                <td><%=  responsable.getType() %></td>
+                                <td><%=  responsable.getRole() %></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="redelete?id=<%=responsable.getId_user()%>">Supprimer</a></td>
+                            </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Derniers Participants Ajoutes</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                            <tr class="text-dark">
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prenom</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Domaine</th>
+                                <th scope="col">Structure</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+							<%
+					    	List<Participant> palist = null;
+							
+							palist = pa.getAll().stream().limit(3).collect(Collectors.toList());
+							int num = palist.size();
+							for(Participant participant : palist) {
+							%>
+                            <tr class="item">
+								<td class="d-none"><%=  participant.getId_user() %></td>
+                                <td><%=  participant.getNom() %></td>
+                                <td><%=  participant.getPrenom() %></td>
+                                <td><%=  participant.getEmail() %></td>
+                                <td><%=  participant.getPhone() %></td>
+                                <td><%=  participant.getDomaine() %></td>
+                                <td><%=  participant.getStructure() %></td>
+                                <td><%=  participant.getRole() %></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="padelete?id=<%=participant.getId_user()%>">Supprimer</a></td>
+                            </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Dernieres Activites Ajoutees</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                            <tr class="text-dark">
+                                <th scope="col">Titre</th>
+                                <th scope="col">Type</th>
+								<th scope="col">Date Debut</th>
+                                <th scope="col">Date Fin</th>
+                                <th scope="col">Descriptif</th>
+                                <th scope="col">Etat</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+							<%
+					    	List<Activite> aclist = null;
+							
+							aclist = ac.getAll().stream().limit(3).collect(Collectors.toList());
+							for(Activite activite : aclist) {
+							%>
+                            <tr class="item">
+								<td class="d-none"><%=  activite.getId_activite() %></td>
+                                <td><%=  activite.getTitre() %></td>
+                                <td><%=  activite.getType() %></td>
+                                <td><%=  activite.getDate_debut() %></td>
+                                <td><%=  activite.getDate_fin() %></td>
+                                <td><%=  activite.getDescriptif() %></td>
+                                <td><%=  activite.getEtat() %></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="acdelete?id=<%=activite.getId_activite()%>">Supprimer</a></td>
+                            </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Derniers Exercies Ajoutes</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                            <tr class="text-dark">
+                                <th scope="col">Annee</th>
+                                <th scope="col">Date Debut</th>
+                                <th scope="col">Date Fin</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+							<%
+					    	List<Exercice> exlist = null;
+							
+							exlist = ex.getAll().stream().limit(3).collect(Collectors.toList());
+							for(Exercice exercice : exlist) {
+							%>
+                            <tr class="item">
+								<td class="d-none"><%=  exercice.getId_exercice() %></td>
+                                <td><%=  exercice.getAnnee() %></td>
+                                <td><%=  exercice.getDate_debut() %></td>
+                                <td><%=  exercice.getDate_fin() %></td>
+                                <td><%=  exercice.getStatus() %></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="exdelete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
+                            </tr>
+                            <%}%>
                             </tbody>
                         </table>
                     </div>
