@@ -23,7 +23,7 @@ public class Exercice {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Activite activite;
 
     public int getId_exercice() {
