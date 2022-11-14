@@ -93,15 +93,6 @@ public class App {
 		*/
    
     	
-    	exerciceServiceImp ex = new exerciceServiceImp();
-    	List<Exercice> exlist = null;
-		
-		
-		
-		exlist = ex.getAllExercice().stream().limit(10).collect(Collectors.toList());
-		for(Exercice exercice : exlist) {
-			System.out.println(exercice);
-		}
 		
 		
 		
