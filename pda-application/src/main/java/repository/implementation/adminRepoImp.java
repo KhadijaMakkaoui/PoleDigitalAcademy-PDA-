@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.hibernate.Session;
-import org.hibernate.query.Query;
+import jakarta.persistence.Query;
 import repository.IRepository;
 
 import java.util.List;
@@ -26,6 +26,11 @@ public class adminRepoImp implements IRepository<Admin> {
         return admin;
     }
 
+    @SuppressWarnings("unchecked")
+    public List<Admin> getAll() {
+        Query query = entityManager.createNativeQuery("select * from admin", Admin.class);
+        return query.getResultList();
+    }
     public Admin find(int id) {
         return entityManager.find(Admin.class, id);
     }

@@ -1,8 +1,11 @@
 package service.implementation;
 
+import entity.Participant;
 import entity.Participation;
 import repository.implementation.participationRepoImp;
 import service.IService;
+
+import java.util.List;
 
 public class participationServiceImp implements IService<Participation> {
     private participationRepoImp repo = new participationRepoImp();
@@ -14,4 +17,6 @@ public class participationServiceImp implements IService<Participation> {
     public Participation update(Participation participation) {return repo.update(participation);}
     @Override
     public void delete(Participation participation) {repo.delete(participation);}
+    @Override
+    public List<Participation> getAll() {return repo.getAll();}
 }
