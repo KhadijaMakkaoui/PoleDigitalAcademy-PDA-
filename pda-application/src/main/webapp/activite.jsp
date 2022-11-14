@@ -162,6 +162,51 @@
                                 </div>
                             </div>
 			<!-- Modal addupdate End-->
+			<!-- Modal addupdate-->
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div id="addupdateex">
+										    <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
+										        <h6 class="mb-4">Nouveau exercice</h6>
+										        <div class="form-floating mb-3 d-none">
+										            <input type="text" class="id form-control" name="id" id="" value="0">
+										        </div>
+										        <div class="form-floating mb-3">
+										            <input type="date" class="form-control" name="dateDebut" id="dateDebut"
+										                   >
+										            <label class="dated" for="dateDebut">Date debut</label>
+										        </div>
+										        <div class="form-floating mb-3">
+										            <input type="date" class="form-control" name="dateFin" id="dateFin"
+										            >
+										            <label class="datef" for="dateFin">Date fin</label>
+										        </div>
+										        <div class="form-floating mb-3">
+										            <input type="text" class="annee form-control" id="annee"
+										                   placeholder="Annee" name="annee" value="">
+										            <label for="annee">Annee</label>
+										        </div>
+										        <div class="form-floating mb-3">
+										            <select class="status form-select" id="status"
+										                    aria-label="Floating label select example" name="status">
+										                <option selected value="ENCOURS">En cours</option>
+										                <option value="TERMINER">Terminer</option>
+										            </select>
+										            <label for="status">Status</label>
+										        </div>
+										        <div class="form-floating mb-3 ">
+										            <input type="text" class="fkexercice form-control" name="fkexercice" id="" value="0">
+										        </div>
+										        <div class="mx-auto w-50">
+										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
+										        </div>
+										    </form>
+										</div> 
+                                    </div>
+                                </div>
+                            </div>
+			<!-- Modal addupdate End-->
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -198,7 +243,9 @@
                                 <td><%=  activite.getDate_fin() %></td>
                                 <td><%=  activite.getDescriptif() %></td>
                                 <td><%=  activite.getEtat() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="acdelete?id=<%=activite.getId_activite()%>">Supprimer</a></td>
+                                <td><a class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                <a class="btn btn-sm mx-1" href="acdelete?id=<%=activite.getId_activite()%>"><i class="fa fa-trash text-primary"></i></a>
+                                <a class="fknew btn btn-sm mx-1" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-plus text-primary"></i></a></td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -238,6 +285,16 @@
             document.querySelector('#addupdate .descriptif').value = descriptif;
             document.querySelector('#addupdate .etat').value = etat;
 
+        })
+    })
+    document.querySelectorAll('.fknew').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            let item = e.target.closest('.item');
+            let children = item.children;
+
+            let id = children[0].textContent;
+
+            document.querySelector('#addupdateex .fkexercice').value = id;
         })
     })
     </script>

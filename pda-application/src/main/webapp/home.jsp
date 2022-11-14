@@ -186,13 +186,11 @@
                             <tr class="text-dark">
                                 <th scope="col">Nom</th>
                                 <th scope="col">Prenom</th>
-                                <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Domaine</th>
                                 <th scope="col">Etat</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Type</th>
-                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -206,13 +204,11 @@
 								<td class="d-none"><%=  responsable.getId_user() %></td>
                                 <td><%=  responsable.getNom() %></td>
                                 <td><%=  responsable.getPrenom() %></td>
-                                <td><%=  responsable.getEmail() %></td>
                                 <td><%=  responsable.getPhone() %></td>
                                 <td><%=  responsable.getDomaine() %></td>
                                 <td><%=  responsable.getEtat() %></td>
                                 <td><%=  responsable.getType() %></td>
                                 <td><%=  responsable.getRole() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="redelete?id=<%=responsable.getId_user()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -235,9 +231,7 @@
                                 <th scope="col">Phone</th>
                                 <th scope="col">Domaine</th>
                                 <th scope="col">Structure</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Action</th>
-                            </tr>
+                                <th scope="col">Role</th>                            </tr>
                             </thead>
                             <tbody>
 							<%
@@ -256,7 +250,6 @@
                                 <td><%=  participant.getDomaine() %></td>
                                 <td><%=  participant.getStructure() %></td>
                                 <td><%=  participant.getRole() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="padelete?id=<%=participant.getId_user()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -279,7 +272,6 @@
                                 <th scope="col">Date Fin</th>
                                 <th scope="col">Descriptif</th>
                                 <th scope="col">Etat</th>
-                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -297,7 +289,6 @@
                                 <td><%=  activite.getDate_fin() %></td>
                                 <td><%=  activite.getDescriptif() %></td>
                                 <td><%=  activite.getEtat() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="acdelete?id=<%=activite.getId_activite()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -318,7 +309,6 @@
                                 <th scope="col">Date Debut</th>
                                 <th scope="col">Date Fin</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -334,7 +324,6 @@
                                 <td><%=  exercice.getDate_debut() %></td>
                                 <td><%=  exercice.getDate_fin() %></td>
                                 <td><%=  exercice.getStatus() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="exdelete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>

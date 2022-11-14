@@ -46,6 +46,7 @@ public class exerciceRepoImp implements IRepository<Exercice> {
         exerciceToUpdate.setDate_debut(exercice.getDate_debut());
         exerciceToUpdate.setDate_fin(exercice.getDate_fin());
         exerciceToUpdate.setStatus(exercice.getStatus());
+        exerciceToUpdate.setActivite(exercice.getActivite());
 
         entityManager.getTransaction().commit();
 

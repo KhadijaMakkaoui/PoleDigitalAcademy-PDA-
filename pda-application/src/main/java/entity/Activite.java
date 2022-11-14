@@ -36,7 +36,7 @@ public class Activite {
     @ManyToOne
     Responsable responsable;
 
-    @OneToMany(mappedBy = "activite")
+    @OneToMany(mappedBy = "activite", cascade = CascadeType.ALL)
     List<Exercice> exercices;
 
     public int getId_activite() {

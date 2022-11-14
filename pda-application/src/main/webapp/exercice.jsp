@@ -6,6 +6,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="entity.Exercice"%>
 <%@ page import="service.implementation.exerciceServiceImp"%>
+<%@ page import="entity.Activite"%>
+<%@ page import="service.implementation.activiteServiceImp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,8 +141,23 @@
 										            </select>
 										            <label for="status">Status</label>
 										        </div>
+										        <div class="form-floating mb-3">
+										            <select class="fkexercice form-select" id="selectact"
+										                    aria-label="Floating label select example" name="fkexercice">
+										                    <%
+															activiteServiceImp ac = new activiteServiceImp();
+													    	List<Activite> aclist = null;
+															
+															aclist = ac.getAll();
+															for(Activite activite : aclist) {
+															%>
+										                <option selected value="<%=  activite.getId_activite() %>"><%=  activite.getTitre() %></option>
+										                <%}%>
+										            </select>
+										            <label for="status">Status</label>
+										        </div>
 										        <div class="mx-auto w-50">
-										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
+										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Modifier</button>
 										        </div>
 										    </form>
 										</div> 
@@ -153,7 +170,6 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Exercies</h6>
-                        <a href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Nouveau exercice</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -180,7 +196,8 @@
                                 <td><%=  exercice.getDate_debut() %></td>
                                 <td><%=  exercice.getDate_fin() %></td>
                                 <td><%=  exercice.getStatus() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="exdelete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a>
+                                <a class="btn btn-sm btn-primary mx-1" href="exdelete?id=<%=exercice.getId_exercice()%>">Supprimer</a></td>
                             </tr>
                             <%}%>
                             </tbody>
