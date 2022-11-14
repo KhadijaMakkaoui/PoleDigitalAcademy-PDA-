@@ -16,10 +16,10 @@ public class Participation {
     private boolean present;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Activite activite;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Participant participant;
 
     public boolean isPresent() {

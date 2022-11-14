@@ -1,8 +1,12 @@
 package service.implementation;
 
 import entity.Admin;
+import entity.Participant;
+import entity.Participation;
 import repository.implementation.adminRepoImp;
 import service.IService;
+
+import java.util.List;
 
 public class adminServiceImp implements IService<Admin> {
     private adminRepoImp repo = new adminRepoImp();
@@ -16,4 +20,6 @@ public class adminServiceImp implements IService<Admin> {
     public Admin update(Admin admin) {return repo.update(admin);}
     @Override
     public void delete(Admin admin) {repo.delete(admin);}
+    @Override
+    public List<Admin> getAll() {return repo.getAll();}
 }

@@ -19,7 +19,7 @@ public class Responsable extends User {
 
 
 
-    @OneToMany(mappedBy = "responsable")
+    @OneToMany(mappedBy = "responsable",cascade = CascadeType.ALL)
     List<Activite> activites;
 
     public Etat getEtat() {

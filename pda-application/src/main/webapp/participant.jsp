@@ -202,6 +202,7 @@
                                 <td><%=  participant.getStructure() %></td>
                                 <td><%=  participant.getRole() %></td>
                                 <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="padelete?id=<%=participant.getId_user()%>">Supprimer</a></td>
+
                             </tr>
                             <%}%>
                             </tbody>

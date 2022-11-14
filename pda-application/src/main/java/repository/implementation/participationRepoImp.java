@@ -1,10 +1,14 @@
 package repository.implementation;
 
+import entity.Participant;
 import entity.Participation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import repository.IRepository;
+
+import java.util.List;
 
 public class participationRepoImp implements IRepository<Participation> {
     private EntityManager entityManager;
@@ -20,6 +24,12 @@ public class participationRepoImp implements IRepository<Participation> {
         entityManager.persist(participation);
         entityManager.getTransaction().commit();
         return participation;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Participation> getAll() {
+        Query query = entityManager.createNativeQuery("select * from participation", Participation.class);
+        return query.getResultList();
     }
 
     public Participation find(int id) {

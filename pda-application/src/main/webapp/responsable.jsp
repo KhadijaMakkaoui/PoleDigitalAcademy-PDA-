@@ -213,7 +213,10 @@
                                 <td><%=  responsable.getEtat() %></td>
                                 <td><%=  responsable.getType() %></td>
                                 <td><%=  responsable.getRole() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="redelete?id=<%=responsable.getId_user()%>">Supprimer</a></td>
+                                <td>
+                                    <a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a>
+                                    <a class="btn btn-sm btn-primary mx-1" href="redelete?id=<%=responsable.getId_user()%>">Supprimer</a>
+                                </td>
                             </tr>
                             <%}%>
                             </tbody>

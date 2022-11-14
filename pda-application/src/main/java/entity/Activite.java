@@ -30,10 +30,10 @@ public class Activite {
 
     @Enumerated(EnumType.STRING)
     private Etat etat;
-    @OneToMany(mappedBy = "activite")
+    @OneToMany(mappedBy = "activite",cascade = CascadeType.ALL)
     List<Participation> participations;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Responsable responsable;
 
     @OneToMany(mappedBy = "activite", cascade = CascadeType.ALL)

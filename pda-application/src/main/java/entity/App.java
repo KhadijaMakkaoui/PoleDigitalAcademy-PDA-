@@ -1,5 +1,6 @@
 package entity;
 
+import repository.implementation.activiteRepoImp;
 import service.implementation.exerciceServiceImp;
 
 import java.util.ArrayList;
@@ -16,10 +17,10 @@ import repository.implementation.exerciceRepoImp;
 
 
 public class App {
-    @SuppressWarnings("unchecked")
 	public static void main(String[] args) {
         //Activite activite = new Activite();
-        //activite.setTitre("testing");
+       //activite.setTitre("testing");
+
 
         //activiteRepoImp rep = new activiteRepoImp();
         //rep.add(activite);

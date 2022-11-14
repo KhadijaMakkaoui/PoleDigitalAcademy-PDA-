@@ -12,7 +12,7 @@ public class Participant extends User {
     @Column(name = "structure", length = 150)
     private String structure;
 
-    @OneToMany(mappedBy = "participant")
+    @OneToMany(mappedBy = "participant",cascade = CascadeType.ALL)
     List<Participation> participations;
 
 
