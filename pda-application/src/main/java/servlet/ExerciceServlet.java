@@ -9,6 +9,8 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import service.implementation.adminServiceImp;
 import service.implementation.exerciceServiceImp;
+import service.implementation.activiteServiceImp;
+
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -34,8 +36,13 @@ public class ExerciceServlet extends HttpServlet {
     	try {
             RequestDispatcher dispatcher = null;
             int id;
+            int fk;
             exerciceServiceImp ex = null;
+            activiteServiceImp ac = null;
+
             Exercice exercice = null;
+            Activite activite = null;
+
             SimpleDateFormat sdf = null;
             String dateDeb = null;
             Date debut = null;
@@ -46,8 +53,13 @@ public class ExerciceServlet extends HttpServlet {
             String ann = null;
             String stat = null;
         	id = Integer.parseInt(request.getParameter("id"));
+        	fk = Integer.parseInt(request.getParameter("fkexercice"));
+        	
+        	
         	ex = new exerciceServiceImp();
             exercice=new Exercice();
+            ac = new activiteServiceImp();
+            activite=new Activite();
             
             sdf = new SimpleDateFormat("yyyy-MM-dd");
             dateDeb = request.getParameter("dateDebut");
@@ -63,6 +75,14 @@ public class ExerciceServlet extends HttpServlet {
             exercice.setDate_fin(fin);
             exercice.setAnnee(ann);
             exercice.setStatus(Status.valueOf(stat));
+            
+            
+            
+            
+            activite = ac.find(fk);
+        	exercice.setActivite(activite);
+
+            
 
             if (id == 0) {
                 Exercice added = ex.add(exercice);				
