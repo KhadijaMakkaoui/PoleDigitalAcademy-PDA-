@@ -32,6 +32,12 @@ public class participationRepoImp implements IRepository<Participation> {
         return query.getResultList();
     }
 
+    @SuppressWarnings("unchecked")
+	public List<Participation> findByActivite(int idactivite) {
+    	Query query = entityManager.createNativeQuery("select * from participation where activite_id_activite ="+idactivite, Participation.class);
+        return query.getResultList();
+    }
+    
     public Participation find(int id) {
         return entityManager.find(Participation.class, id);
     }
