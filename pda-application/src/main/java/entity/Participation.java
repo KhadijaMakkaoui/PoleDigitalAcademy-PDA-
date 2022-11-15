@@ -25,6 +25,7 @@ public class Participation {
     public boolean isPresent() {
         return present;
     }
+    
 
     public void setPresent(boolean present) {
         this.present = present;
