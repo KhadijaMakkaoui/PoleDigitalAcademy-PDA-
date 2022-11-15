@@ -71,6 +71,7 @@
                     <a href="home.jsp" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="responsable.jsp" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Responsable</a>
                     <a href="participant.jsp" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Participant</a>
+                    <a href="participation.jsp" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Participation</a>
                     <a href="activite.jsp" class="nav-item nav-link "><i class="fa fa-table me-2"></i>Activite</a>
                     <a href="exercice.jsp" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>Exercice</a>
                 </div>

@@ -75,6 +75,7 @@
                     <a href="home.jsp" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="responsable.jsp" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Responsable</a>
                     <a href="participant.jsp" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Participant</a>
+                    <a href="participation.jsp" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Participation</a>
                     <a href="activite.jsp" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Activite</a>
                     <a href="exercice.jsp" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>Exercice</a>
                 </div>
@@ -218,10 +219,10 @@
                                         <div id="addupdateac">
 										    <form method="post" action="activite" class="bg-light rounded h-100 p-4">
 										        <h6 class="mb-4">Assigner responsable</h6>
-										        <div class="form-floating mb-3 d-none">
+										        <div class="form-floating mb-3 ">
 										            <input type="text" class="id form-control" name="id" id="" value="-1">
 										        </div>
-										        <div class="form-floating mb-3 d-none">
+										        <div class="form-floating mb-3 ">
 										            <input type="text" class="fkactivite form-control" name="fkactivite" id="" value="0">
 										        </div>
 										        <div class="form-floating mb-3">
