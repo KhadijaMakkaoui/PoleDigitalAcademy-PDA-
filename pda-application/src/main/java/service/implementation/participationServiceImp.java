@@ -2,6 +2,7 @@ package service.implementation;
 
 import entity.Participant;
 import entity.Participation;
+import jakarta.persistence.Query;
 import repository.implementation.participationRepoImp;
 import service.IService;
 
@@ -19,4 +20,5 @@ public class participationServiceImp implements IService<Participation> {
     public void delete(Participation participation) {repo.delete(participation);}
     @Override
     public List<Participation> getAll() {return repo.getAll();}
+	public List<Participation> findByActivite(int idactivite) {return repo.findByActivite(idactivite);}
 }

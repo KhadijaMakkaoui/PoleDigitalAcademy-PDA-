@@ -7,6 +7,9 @@
 <%@ page import="entity.Participation"%>
 <%@ page import="service.implementation.participationServiceImp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="entity.Activite"%>
+<%@ page import="service.implementation.activiteServiceImp"%>
+<%@ page import="entity.Responsable"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,6 +171,29 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Participations</h6>
+                        <form method="post" action="participation" class="bg-light rounded h-100 p-4">
+	                        <div class="form-floating mb-3 d-none">
+								<input type="text" class="id form-control" name="id" id="" value="-1">
+							</div>
+					       	<div class="form-floating mb-3">
+					            <select class="fkac form-select" id="selectact"
+					                    aria-label="Floating label select example" name="fkac">
+					                    <%
+										activiteServiceImp pa = new activiteServiceImp();
+								    	List<Activite> aclist = null;
+										
+										aclist = pa.getAll();
+										for(Activite activite : aclist) {
+										%>
+					                <option selected value="<%=  activite.getId_activite() %>"><%=  activite.getTitre() %></option>
+					                <%}%>
+					            </select>
+					            <label for="participant">Activite</label>
+					        </div>
+					        <div class="mx-auto w-50">
+					            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Rechercher</button>
+					        </div>
+					    </form>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -183,17 +209,21 @@
 							<%
 							participationServiceImp pation = new participationServiceImp();
 					    	List<Participation> pationlist = null;
-							
-							pationlist = pation.getAll();
+							if(request.getAttribute("List")!=null) {
+								pationlist = (List<Participation>)request.getAttribute("List");
+							} else {
+								pationlist = pation.getAll();
+							}
 							int num = pationlist.size();
 							for(Participation participation : pationlist) {
 							%>
                             <tr class="item">
 								<td class="d-none"><%=  participation.getId() %></td>
-                                <td rowspan="<%= num %>"><%=  participation.getActivite().getTitre() %></td>
+                                <td><%=  participation.getActivite().getTitre() %></td>
                                 <td><%=  participation.getParticipant().getNom() %> <%=  participation.getParticipant().getPrenom() %></td>
                                 <td><%=  participation.isPresent() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="padelete?id=<%=participation.getId()%>">Supprimer</a></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a>
+                                <a class="btn btn-sm btn-primary mx-1" href="pationdelete?id=<%=participation.getId()%>">Supprimer</a></td>
 
                             </tr>
                             <%}%>
