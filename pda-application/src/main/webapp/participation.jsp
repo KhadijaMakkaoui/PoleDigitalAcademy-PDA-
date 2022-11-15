@@ -4,8 +4,8 @@
 	}
 %>
 <%@ page import="java.util.List"%>
-<%@ page import="entity.Responsable"%>
-<%@ page import="service.implementation.responsableServiceImp"%>
+<%@ page import="entity.Participation"%>
+<%@ page import="service.implementation.participationServiceImp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,9 +69,9 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="home.jsp" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="responsable.jsp" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Responsable</a>
-                    <a href="participant.jsp" class="nav-item nav-link "><i class="fa fa-keyboard me-2"></i>Participant</a>
-                    <a href="participation.jsp" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Participation</a>
+                    <a href="responsable.jsp" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Responsable</a>
+                    <a href="participant.jsp" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Participant</a>
+					<a href="participation.jsp" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Participation</a>
                     <a href="activite.jsp" class="nav-item nav-link "><i class="fa fa-table me-2"></i>Activite</a>
                     <a href="exercice.jsp" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>Exercice</a>
                 </div>
@@ -112,8 +112,8 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div id="addupdate">
-										    <form method="post" action="responsable" class="bg-light rounded h-100 p-4">
-										        <h6 class="mb-4">Nouveau responsable</h6>
+										    <form method="post" action="participant" class="bg-light rounded h-100 p-4">
+										        <h6 class="mb-4">Nouveau participant</h6>
 										        <div class="form-floating mb-3 d-none">
 										            <input type="text" class="id form-control" name="id" id="" value="0">
 										        </div>
@@ -143,27 +143,16 @@
 										            <label for="domaine">Domaine</label>
 										        </div>
 										        <div class="form-floating mb-3">
-										            <select class="etat form-select" id="etat"
-										                    aria-label="Floating label select example" name="etat">
-										                <option selected value="ACTIVE">Active</option>
-										                <option value="DESACTIVE">Desactive</option>
-										            </select>
-										            <label for="etat">Etat</label>
+										            <input type="text" class="structure form-control" id="structure"
+										                   placeholder="Structure" name="structure" value="">
+										            <label for="structure">Structure</label>
 										        </div>
 										        <div class="form-floating mb-3">
 										            <select class="role form-select" id="role"
 										                    aria-label="Floating label select example" name="role">
-										                <option selected value="RESPONSABLE">Responsable</option>
+										                <option selected value="PARTICIPANT">Participant</option>
 										            </select>
 										            <label for="role">Role</label>
-										        </div>
-										        <div class="form-floating mb-3">
-										            <select class="type form-select" id="type"
-										                    aria-label="Floating label select example" name="type">
-										                <option selected value="FORMATEUR">Formateur</option>
-										                <option value="INTERVENANT">Intervenant</option>
-										            </select>
-										            <label for="type">Type</label>
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
@@ -178,46 +167,34 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Responsables</h6>
-                        <a href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Nouveau responsable</a>
+                        <h6 class="mb-0">Participations</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                             <tr class="text-dark">
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prenom</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Domaine</th>
-                                <th scope="col">Etat</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Type</th>
+                                <th scope="col">Titre activite</th>
+                                <th scope="col">Participants</th>
+                                <th scope="col">Present</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
                             <tbody>
 							<%
-							responsableServiceImp re = new responsableServiceImp();
-					    	List<Responsable> relist = null;
+							participationServiceImp pation = new participationServiceImp();
+					    	List<Participation> pationlist = null;
 							
-							relist = re.getAll();
-							for(Responsable responsable : relist) {
+							pationlist = pation.getAll();
+							int num = pationlist.size();
+							for(Participation participation : pationlist) {
 							%>
                             <tr class="item">
-								<td class="d-none"><%=  responsable.getId_user() %></td>
-                                <td><%=  responsable.getNom() %></td>
-                                <td><%=  responsable.getPrenom() %></td>
-                                <td><%=  responsable.getEmail() %></td>
-                                <td><%=  responsable.getPhone() %></td>
-                                <td><%=  responsable.getDomaine() %></td>
-                                <td><%=  responsable.getEtat() %></td>
-                                <td><%=  responsable.getType() %></td>
-                                <td><%=  responsable.getRole() %></td>
-                                <td>
-                                    <a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a>
-                                    <a class="btn btn-sm btn-primary mx-1" href="redelete?id=<%=responsable.getId_user()%>">Supprimer</a>
-                                </td>
+								<td class="d-none"><%=  participation.getId() %></td>
+                                <td rowspan="<%= num %>"><%=  participation.getActivite().getTitre() %></td>
+                                <td><%=  participation.getParticipant().getNom() %> <%=  participation.getParticipant().getPrenom() %></td>
+                                <td><%=  participation.isPresent() %></td>
+                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="padelete?id=<%=participation.getId()%>">Supprimer</a></td>
+
                             </tr>
                             <%}%>
                             </tbody>
@@ -247,10 +224,8 @@
             let email = children[3].textContent;
             let phone = children[4].textContent;
             let domaine = children[5].textContent;
-            let etat = children[6].textContent;
-            let type = children[7].textContent;
-            let role = children[8].textContent;
-
+            let structure = children[6].textContent;
+            let role = children[7].textContent;
 
 
             document.querySelector('#addupdate .id').value = id;
@@ -259,8 +234,7 @@
             document.querySelector('#addupdate .email').value = email;
             document.querySelector('#addupdate .phone').value = phone;
             document.querySelector('#addupdate .domaine').value = domaine;
-            document.querySelector('#addupdate .etat').value = etat;
-            document.querySelector('#addupdate .type').value = type;
+            document.querySelector('#addupdate .structure').value = structure;
             document.querySelector('#addupdate .role').value = role;
 
         })

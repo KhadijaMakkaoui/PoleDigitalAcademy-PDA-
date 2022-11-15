@@ -1,21 +1,23 @@
 package servlet;
 
-import java.io.IOException;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-
 import service.implementation.activiteServiceImp;
 import service.implementation.participationServiceImp;
 import service.implementation.participantServiceImp;
+import jakarta.servlet.annotation.*;
+
+import java.io.IOException;
+
 import entity.Activite;
 import entity.Participation;
 import entity.Participant;
 
 
-@WebServlet(name = "ParticipationServlet", urlPatterns = {"/participation", "/acdelete"})
+@WebServlet(name = "ParticipationServlet", urlPatterns = {"/participation", "/pationdelete"})
 public class ParticipationServlet extends HttpServlet {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/*RequestDispatcher dispatcher = null;
         int id;
         activiteServiceImp ac = null;
@@ -25,7 +27,7 @@ public class ParticipationServlet extends HttpServlet {
     	dispatcher = request.getRequestDispatcher("activite.jsp");
         dispatcher.forward(request, response);*/
 	}
-
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
     		RequestDispatcher dispatcher = null;
@@ -83,5 +85,4 @@ public class ParticipationServlet extends HttpServlet {
         	e.printStackTrace();
         }
 	}
-
 }
