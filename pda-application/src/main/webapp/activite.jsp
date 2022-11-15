@@ -6,6 +6,10 @@
 <%@ page import="java.util.List"%>
 <%@ page import="entity.Activite"%>
 <%@ page import="service.implementation.activiteServiceImp"%>
+<%@ page import="entity.Responsable"%>
+<%@ page import="service.implementation.responsableServiceImp"%>
+<%@ page import="entity.Participant"%>
+<%@ page import="service.implementation.participantServiceImp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,7 +117,7 @@
                                         <div id="addupdate">
 										    <form method="post" action="activite" class="bg-light rounded h-100 p-4">
 										        <h6 class="mb-4">Nouvelle activite</h6>
-										        <div class="form-floating mb-3 d-none">
+										        <div class="form-floating mb-3">
 										            <input type="text" class="id form-control" name="id" id="" value="0">
 										        </div>
 										        <div class="form-floating mb-3">
@@ -195,11 +199,85 @@
 										            </select>
 										            <label for="status">Status</label>
 										        </div>
-										        <div class="form-floating mb-3 ">
+										        <div class="form-floating mb-3 d-none">
 										            <input type="text" class="fkexercice form-control" name="fkexercice" id="" value="0">
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
+										        </div>
+										    </form>
+										</div> 
+                                    </div>
+                                </div>
+                            </div>
+			<!-- Modal addupdate End-->
+			<!-- Modal responsable-->
+                            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div id="addupdateac">
+										    <form method="post" action="activite" class="bg-light rounded h-100 p-4">
+										        <h6 class="mb-4">Assigner responsable</h6>
+										        <div class="form-floating mb-3 d-none">
+										            <input type="text" class="id form-control" name="id" id="" value="-1">
+										        </div>
+										        <div class="form-floating mb-3 d-none">
+										            <input type="text" class="fkactivite form-control" name="fkactivite" id="" value="0">
+										        </div>
+										        <div class="form-floating mb-3">
+										            <select class="fkresp form-select" id="selectact"
+										                    aria-label="Floating label select example" name="fkresp">
+										                    <%
+															responsableServiceImp re = new responsableServiceImp();
+													    	List<Responsable> relist = null;
+															
+										            		relist = re.getAll();
+															for(Responsable responsable : relist) {
+															%>
+										                <option selected value="<%=  responsable.getId_user() %>"><%=  responsable.getId_user() %> <%=  responsable.getNom() %> <%=  responsable.getPrenom() %></option>
+										                <%}%>
+										            </select>
+										            <label for="responsable">Responsable</label>
+										        </div>
+										        <div class="mx-auto w-50">
+										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Assigner</button>
+										        </div>
+										    </form>
+										</div> 
+                                    </div>
+                                </div>
+                            </div>
+			<!-- Modal addupdate End-->
+			<!-- Modal participant-->
+                            <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div id="addupdatepa">
+										    <form method="post" action="participation" class="bg-light rounded h-100 p-4">
+										        <h6 class="mb-4">Assigner participant</h6>
+										        <div class="form-floating mb-3 ">
+										            <input type="text" class="id form-control" name="id" id="" value="-1">
+										        </div>
+										        <div class="form-floating mb-3 ">
+										            <input type="text" class="fkactivite form-control" name="fkactivite" id="" value="0">
+										        </div>
+										        <div class="form-floating mb-3">
+										            <select class="fkpar form-select" id="selectact"
+										                    aria-label="Floating label select example" name="fkpar">
+										                    <%
+															participantServiceImp pa = new participantServiceImp();
+													    	List<Participant> palist = null;
+															
+										            		palist = pa.getAll();
+															for(Participant participant : palist) {
+															%>
+										                <option selected value="<%=  participant.getId_user() %>"><%=  participant.getId_user() %> <%=  participant.getNom() %> <%=  participant.getPrenom() %></option>
+										                <%}%>
+										            </select>
+										            <label for="participant">Participant</label>
+										        </div>
+										        <div class="mx-auto w-50">
+										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Participer</button>
 										        </div>
 										    </form>
 										</div> 
@@ -243,9 +321,11 @@
                                 <td><%=  activite.getDate_fin() %></td>
                                 <td><%=  activite.getDescriptif() %></td>
                                 <td><%=  activite.getEtat() %></td>
-                                <td><a class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
-                                <a class="btn btn-sm mx-1" href="acdelete?id=<%=activite.getId_activite()%>"><i class="fa fa-trash text-primary"></i></a>
-                                <a class="fknew btn btn-sm mx-1" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-plus text-primary"></i></a></td>
+                                <td><a title="Modifier activite" class="addupdate btn btn-sm " href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                <a title="Supprimer activite" class="btn btn-sm " href="acdelete?id=<%=activite.getId_activite()%>"><i class="fa fa-trash text-primary"></i></a>
+                                <a title="Ajouter exercice" class="fknew btn btn-sm" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-icons text-primary"></i></a>
+                                <a title="Assigner à un responsable" class="fkact btn btn-sm" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"><i class="fa fa-user-tie text-primary"></i></a>
+                                <a title="Ajouter participant" class="fkpar btn btn-sm" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal4"><i class="fa fa-users text-primary"></i></a></td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -295,6 +375,26 @@
             let id = children[0].textContent;
 
             document.querySelector('#addupdateex .fkexercice').value = id;
+        })
+    })
+    document.querySelectorAll('.fkact').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            let item = e.target.closest('.item');
+            let children = item.children;
+
+            let id = children[0].textContent;
+
+            document.querySelector('#addupdateac .fkactivite').value = id;
+        })
+    })
+    document.querySelectorAll('.fkpar').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            let item = e.target.closest('.item');
+            let children = item.children;
+
+            let id = children[0].textContent;
+
+            document.querySelector('#addupdatepa .fkactivite').value = id;
         })
     })
     </script>

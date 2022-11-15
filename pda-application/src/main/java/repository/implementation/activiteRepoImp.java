@@ -3,7 +3,9 @@ package repository.implementation;
 import java.util.List;
 
 import entity.Activite;
+import entity.Etat;
 import entity.Exercice;
+import entity.TypeActivite;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -41,6 +43,10 @@ public class activiteRepoImp implements IRepository<Activite> {
         entityManager.getTransaction().begin();
         activiteToUpdate.setTitre(activite.getTitre());
         activiteToUpdate.setDescriptif(activite.getDescriptif());
+        activiteToUpdate.setType(activite.getType());
+        activiteToUpdate.setDate_debut(activite.getDate_debut());
+        activiteToUpdate.setDate_fin(activite.getDate_fin());
+        activiteToUpdate.setEtat(activite.getEtat());
         entityManager.getTransaction().commit();
 
         return activiteToUpdate;
