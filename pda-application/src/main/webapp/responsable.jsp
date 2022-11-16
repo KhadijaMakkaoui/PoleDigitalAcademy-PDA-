@@ -174,6 +174,26 @@
                                 </div>
                             </div>
 			<!-- Modal addupdate End-->
+            <!-- Modal delete-->
+            <div class="modal fade" id="exampleModaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div id="deletemodal" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger" id="exampleModalLabel">DELETE ALERT</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="px-4 py-3">
+                            Etes-vous sur de vouloir supprimer? <br>
+                        </div>
+                        <form action="redelete" method="get">
+                            <input type="text" class="iddelete form-control d-none" name="id" id="iddelete" value="0">
+                            <div class="px-4 py-3 mx-auto w-50">
+                                <button type="submit" class="btn btn-danger py-3  mb-4 w-100">Oui</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -191,7 +211,6 @@
                                 <th scope="col">Phone</th>
                                 <th scope="col">Domaine</th>
                                 <th scope="col">Etat</th>
-                                <th scope="col">Role</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -203,6 +222,7 @@
 							
 							relist = re.getAll();
 							for(Responsable responsable : relist) {
+                                int idresp = responsable.getId_user();
 							%>
                             <tr class="item">
 								<td class="d-none"><%=  responsable.getId_user() %></td>
@@ -213,10 +233,10 @@
                                 <td><%=  responsable.getDomaine() %></td>
                                 <td><%=  responsable.getEtat() %></td>
                                 <td><%=  responsable.getType() %></td>
-                                <td><%=  responsable.getRole() %></td>
+                                <td class="d-none"><%=  responsable.getRole() %></td>
                                 <td>
-                                    <a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a>
-                                    <a class="btn btn-sm btn-primary mx-1" href="redelete?id=<%=responsable.getId_user()%>">Supprimer</a>
+                                    <a class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                    <a class="deletebtn btn btn-sm mx-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a>
                                 </td>
                             </tr>
                             <%}%>
@@ -263,6 +283,16 @@
             document.querySelector('#addupdate .type').value = type;
             document.querySelector('#addupdate .role').value = role;
 
+        })
+    })
+    document.querySelectorAll('.deletebtn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            let item = e.target.closest('.item');
+            let children = item.children;
+
+            let id = children[0].textContent;
+
+            document.querySelector('#deletemodal .iddelete').value = id;
         })
     })
     </script>
