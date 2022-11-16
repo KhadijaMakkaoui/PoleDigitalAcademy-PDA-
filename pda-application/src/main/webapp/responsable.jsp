@@ -235,8 +235,8 @@
                                 <td><%=  responsable.getType() %></td>
                                 <td class="d-none"><%=  responsable.getRole() %></td>
                                 <td>
-                                    <a class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
-                                    <a class="deletebtn btn btn-sm mx-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a>
+                                    <a class="addupdate btn btn-sm  px-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                    <a class="deletebtn btn btn-sm  px-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a>
                                 </td>
                             </tr>
                             <%}%>
