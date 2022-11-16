@@ -143,8 +143,8 @@
 										            <label for="status">Status</label>
 										        </div>
 										        <div class="form-floating mb-3">
-										            <select class="fkexercice form-select" id="selectact"
-										                    aria-label="Floating label select example" name="fkexercice">
+										            <select class="act form-select" id="selectact"
+										                    aria-label="Floating label select example" name="act">
 										                    <%
 															activiteServiceImp ac = new activiteServiceImp();
 													    	List<Activite> aclist = null;
@@ -155,7 +155,7 @@
 										                <option selected value="<%=  activite.getId_activite() %>"><%=  activite.getTitre() %></option>
 										                <%}%>
 										            </select>
-										            <label for="status">Status</label>
+										            <label for="selectact">Activite</label>
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Modifier</button>
@@ -227,12 +227,16 @@
             let dated = children[2].textContent;
             let datef = children[3].textContent;
             let status = children[4].textContent;
+            let act = children[5].textContent;
+
 
             document.querySelector('#addupdate .id').value = id;
             document.querySelector('#addupdate .annee').value = annee;
             document.querySelector('#addupdate .dated').textContent = dated;
             document.querySelector('#addupdate .datef').textContent = datef;
             document.querySelector('#addupdate .status').value = status;
+            document.querySelector('#addupdate .act').value = act;
+
 
         })
     })
