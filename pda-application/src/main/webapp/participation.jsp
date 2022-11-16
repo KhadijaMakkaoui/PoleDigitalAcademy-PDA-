@@ -171,7 +171,7 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Participations</h6>
-                        <form method="post" action="participation" class="bg-light rounded h-100 p-4">
+                        <form method="post" action="participation" class="bg-light rounded p-4">
 	                        <div class="form-floating mb-3 d-none">
 								<input type="text" class="id form-control" name="id" id="" value="-1">
 							</div>
@@ -191,7 +191,7 @@
 					            <label for="participant">Activite</label>
 					        </div>
 					        <div class="mx-auto w-50">
-					            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Rechercher</button>
+					            <button type="submit" class="btn  py-3  w-100"><i class="fa fa-search text-primary"></i></button>
 					        </div>
 					    </form>
                     </div>
@@ -222,8 +222,7 @@
                                 <td><%=  participation.getActivite().getTitre() %></td>
                                 <td><%=  participation.getParticipant().getNom() %> <%=  participation.getParticipant().getPrenom() %></td>
                                 <td><%=  participation.isPresent() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a>
-                                <a class="btn btn-sm btn-primary mx-1" href="pationdelete?id=<%=participation.getId()%>">Supprimer</a></td>
+                                <td><a title="Supprimer participation" class="btn btn-sm  mx-1" href="pationdelete?id=<%=participation.getId()%>"><i class="fa fa-trash text-primary"></i></a></td>
 
                             </tr>
                             <%}%>
