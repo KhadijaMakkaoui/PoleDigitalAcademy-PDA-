@@ -171,28 +171,27 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Participations</h6>
-                        <form method="post" action="participation" class="bg-light rounded p-4">
-	                        <div class="form-floating mb-3 d-none">
+                        <form method="post" action="participation" class="bg-light rounded">
+	                        <div class="form-floating d-none">
 								<input type="text" class="id form-control" name="id" value="0">
 							</div>
-					       	<div class="form-floating mb-3">
-					            <select class="fkac form-select" id="selectact"
-					                    aria-label="Floating label select example" name="fkac">
-					                    <%
-										activiteServiceImp pa = new activiteServiceImp();
-								    	List<Activite> aclist = null;
-										
-										aclist = pa.getAll();
-										for(Activite activite : aclist) {
-										%>
-					                <option selected value="<%=  activite.getId_activite() %>"><%=  activite.getTitre() %></option>
-					                <%}%>
-					            </select>
-					            <label for="selectact">Activite</label>
-					        </div>
-					        <div class="mx-auto w-50">
-					            <button type="submit" class="btn  py-3  w-100"><i class="fa fa-search text-primary"></i></button>
-					        </div>
+                            <div class="d-flex ">
+                                <select class="fkac form-select" id="selectact"
+                                        aria-label="Floating label select example" name="fkac">
+                                    <%
+                                        activiteServiceImp pa = new activiteServiceImp();
+                                        List<Activite> aclist = null;
+
+                                        aclist = pa.getAll();
+                                        for(Activite activite : aclist) {
+                                    %>
+                                    <option selected value="<%=  activite.getId_activite() %>"><%=  activite.getTitre() %></option>
+                                    <%}%>
+                                </select>
+                                <div class="mx-auto w-50">
+                                    <button type="submit" class="btn  py-3  w-100"><i class="fa fa-search text-primary"></i></button>
+                                </div>
+                            </div>
 					    </form>
                     </div>
                     <div class="table-responsive">
