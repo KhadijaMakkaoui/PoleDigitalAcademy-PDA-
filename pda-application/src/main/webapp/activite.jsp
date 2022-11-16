@@ -204,7 +204,7 @@
 										            <input type="text" class="fkexercice form-control" name="fkexercice" value="0">
 										        </div>
 										        <div class="mx-auto w-50">
-										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
+										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter</button>
 										        </div>
 										    </form>
 										</div> 

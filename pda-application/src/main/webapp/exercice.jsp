@@ -218,8 +218,8 @@
                                 <td><%=  exercice.getDate_debut() %></td>
                                 <td><%=  exercice.getDate_fin() %></td>
                                 <td><%=  exercice.getStatus() %></td>
-                                <td><a title="Modifier exercice" class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
-                                <a title="Supprimer exercice" class=" deletebtn btn btn-sm mx-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a></td>
+                                <td><a title="Modifier exercice" class="addupdate btn btn-sm px-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                <a title="Supprimer exercice" class=" deletebtn btn btn-sm px-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a></td>
                             </tr>
                             <%}%>
                             </tbody>
