@@ -275,7 +275,7 @@
 										                <option selected value="<%=  participant.getId_user() %>"><%=  participant.getId_user() %> <%=  participant.getNom() %> <%=  participant.getPrenom() %></option>
 										                <%}%>
 										            </select>
-										            <label for="participant">Participant</label>
+										            <label for="selectact">Participant</label>
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Participer</button>

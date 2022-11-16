@@ -50,32 +50,26 @@ public class ParticipationServlet extends HttpServlet {
             pation= new participationServiceImp();
             participation = new Participation();
         	id = Integer.parseInt(request.getParameter("id"));
-        	
-        	/*idac = Integer.parseInt(request.getParameter("fkactivite"));
-        	idpa = Integer.parseInt(request.getParameter("fkpar"));
-            
-			activite = ac.find(idac);
-			participant = pa.find(idpa);
+        	if(id==-1){
+                idac = Integer.parseInt(request.getParameter("fkactivite"));
+                idpa = Integer.parseInt(request.getParameter("fkpar"));
 
-			participation.setParticipant(participant);
-			participation.setActivite(activite);
-			participation.setPresent(false);
-			
-			Participation added = pation.add(participation);*/
-            
+                activite = ac.find(idac);
+                participant = pa.find(idpa);
 
-			
-			
-			idac = Integer.parseInt(request.getParameter("fkac"));
-        	List<Participation> palist = null;
-        	palist = pation.findByActivite(idac);
-        	request.setAttribute("List", palist);
-			
-			
-			
-			
-			
-			
+                participation.setParticipant(participant);
+                participation.setActivite(activite);
+                participation.setPresent(false);
+
+                Participation added = pation.add(participation);
+            }else{
+
+                idac = Integer.parseInt(request.getParameter("fkac"));
+                List<Participation> palist = null;
+                palist = pation.findByActivite(idac);
+                request.setAttribute("List", palist);
+            }
+
 			
         	/*    
 			RequestDispatcher dispatcher = null;
