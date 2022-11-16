@@ -52,8 +52,10 @@ public class ExerciceServlet extends HttpServlet {
 
             String ann = null;
             String stat = null;
-        	id = Integer.parseInt(request.getParameter("id"));
-        	fk = Integer.parseInt(request.getParameter("fkexercice"));
+            int act ;
+
+            id = Integer.parseInt(request.getParameter("id"));
+
         	
         	
         	ex = new exerciceServiceImp();
@@ -70,23 +72,31 @@ public class ExerciceServlet extends HttpServlet {
             
             ann = request.getParameter("annee");
             stat = request.getParameter("status");
-            
+
+
+
             exercice.setDate_debut(debut);
             exercice.setDate_fin(fin);
             exercice.setAnnee(ann);
             exercice.setStatus(Status.valueOf(stat));
-            
-            
-            
-            
-            activite = ac.find(fk);
-        	exercice.setActivite(activite);
+
+
+
+
+
+
 
             
 
             if (id == 0) {
+                fk = Integer.parseInt(request.getParameter("fkexercice"));
+                activite = ac.find(fk);
+                exercice.setActivite(activite);
                 Exercice added = ex.add(exercice);				
 			} else {
+                act = Integer.parseInt(request.getParameter("act"));
+                activite = ac.find(act);
+                exercice.setActivite(activite);
                 exercice.setId_exercice(id);
                 Exercice updated = ex.update(exercice);
 			}
