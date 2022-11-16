@@ -147,7 +147,7 @@
 										                   placeholder="Structure" name="structure" value="">
 										            <label for="structure">Structure</label>
 										        </div>
-										        <div class="form-floating mb-3">
+										        <div class="form-floating mb-3 d-none">
 										            <select class="role form-select" id="role"
 										                    aria-label="Floating label select example" name="role">
 										                <option selected value="PARTICIPANT">Participant</option>
