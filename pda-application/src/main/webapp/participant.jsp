@@ -163,6 +163,26 @@
                                 </div>
                             </div>
 			<!-- Modal addupdate End-->
+            <!-- Modal delete-->
+            <div class="modal fade" id="exampleModaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div id="deletemodal" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger" id="exampleModalLabel">DELETE ALERT</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="px-4 py-3">
+                            Etes-vous sur de vouloir supprimer? <br>
+                        </div>
+                        <form action="padelete" method="get">
+                            <input type="text" class="iddelete form-control d-none" name="id" id="iddelete" value="0">
+                            <div class="px-4 py-3 mx-auto w-50">
+                                <button type="submit" class="btn btn-danger py-3  mb-4 w-100">Oui</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -180,7 +200,6 @@
                                 <th scope="col">Phone</th>
                                 <th scope="col">Domaine</th>
                                 <th scope="col">Structure</th>
-                                <th scope="col">Role</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -201,8 +220,9 @@
                                 <td><%=  participant.getPhone() %></td>
                                 <td><%=  participant.getDomaine() %></td>
                                 <td><%=  participant.getStructure() %></td>
-                                <td><%=  participant.getRole() %></td>
-                                <td><a class="addupdate btn btn-sm btn-primary mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Modifier</a><a class="btn btn-sm btn-primary mx-1" href="padelete?id=<%=participant.getId_user()%>">Supprimer</a></td>
+                                <td class="d-none"><%=  participant.getRole() %></td>
+                                <td><a class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                    <a class="btn deletebtn btn-sm mx-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a></td>
 
                             </tr>
                             <%}%>
@@ -246,6 +266,16 @@
             document.querySelector('#addupdate .structure').value = structure;
             document.querySelector('#addupdate .role').value = role;
 
+        })
+        document.querySelectorAll('.deletebtn').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                let item = e.target.closest('.item');
+                let children = item.children;
+
+                let id = children[0].textContent;
+
+                document.querySelector('#deletemodal .iddelete').value = id;
+            })
         })
     })
     </script>
