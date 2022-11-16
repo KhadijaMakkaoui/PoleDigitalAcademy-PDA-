@@ -221,8 +221,8 @@
                                 <td><%=  participant.getDomaine() %></td>
                                 <td><%=  participant.getStructure() %></td>
                                 <td class="d-none"><%=  participant.getRole() %></td>
-                                <td><a class="addupdate btn btn-sm mx-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
-                                    <a class="btn deletebtn btn-sm mx-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a></td>
+                                <td><a title="Modifier participant" class="addupdate btn btn-sm px-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                    <a title="Supprimer participant" class="btn deletebtn btn-sm px-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a></td>
 
                             </tr>
                             <%}%>

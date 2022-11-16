@@ -118,7 +118,7 @@
                                         <div id="addupdate">
 										    <form method="post" action="activite" class="bg-light rounded h-100 p-4">
 										        <h6 class="mb-4">Nouvelle activite</h6>
-										        <div class="form-floating mb-3">
+										        <div class="form-floating mb-3  d-none">
 										            <input type="text" class="id form-control" name="id" id="" value="0">
 										        </div>
 										        <div class="form-floating mb-3">
@@ -175,7 +175,7 @@
 										    <form method="post" action="exercice" class="bg-light rounded h-100 p-4">
 										        <h6 class="mb-4">Nouveau exercice</h6>
 										        <div class="form-floating mb-3 d-none">
-										            <input type="text" class="id form-control" name="id" id="" value="0">
+										            <input type="text" class="id form-control" name="id"  value="0">
 										        </div>
 										        <div class="form-floating mb-3">
 										            <input type="date" class="form-control" name="dateDebut" id="dateDebut"
@@ -201,7 +201,7 @@
 										            <label for="status">Status</label>
 										        </div>
 										        <div class="form-floating mb-3 d-none">
-										            <input type="text" class="fkexercice form-control" name="fkexercice" id="" value="0">
+										            <input type="text" class="fkexercice form-control" name="fkexercice" value="0">
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Ajouter/Modifier</button>
@@ -219,14 +219,14 @@
                                         <div id="addupdateac">
 										    <form method="post" action="activite" class="bg-light rounded h-100 p-4">
 										        <h6 class="mb-4">Assigner responsable</h6>
-										        <div class="form-floating mb-3 ">
-										            <input type="text" class="id form-control" name="id" id="" value="-1">
+										        <div class="form-floating mb-3  d-none">
+										            <input type="text" class="id form-control" name="id" value="-1">
 										        </div>
-										        <div class="form-floating mb-3 ">
-										            <input type="text" class="fkactivite form-control" name="fkactivite" id="" value="0">
+										        <div class="form-floating mb-3  d-none">
+										            <input type="text" class="fkactivite form-control" name="fkactivite" value="0">
 										        </div>
 										        <div class="form-floating mb-3">
-										            <select class="fkresp form-select" id="selectact"
+										            <select class="fkresp form-select" id="selectres"
 										                    aria-label="Floating label select example" name="fkresp">
 										                    <%
 															responsableServiceImp re = new responsableServiceImp();
@@ -235,10 +235,10 @@
 										            		relist = re.getAll();
 															for(Responsable responsable : relist) {
 															%>
-										                <option selected value="<%=  responsable.getId_user() %>"><%=  responsable.getId_user() %> <%=  responsable.getNom() %> <%=  responsable.getPrenom() %></option>
+										                <option selected value="<%=  responsable.getId_user() %>"><%=  responsable.getNom() %> <%=  responsable.getPrenom() %></option>
 										                <%}%>
 										            </select>
-										            <label for="responsable">Responsable</label>
+										            <label for="selectres">Responsable</label>
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Assigner</button>
@@ -256,14 +256,14 @@
                                         <div id="addupdatepa">
 										    <form method="post" action="participation" class="bg-light rounded h-100 p-4">
 										        <h6 class="mb-4">Assigner participant</h6>
-										        <div class="form-floating mb-3 ">
-										            <input type="text" class="id form-control" name="id" id="" value="-1">
+										        <div class="form-floating mb-3 d-none">
+										            <input type="text" class="id form-control" name="id" value="-1">
 										        </div>
-										        <div class="form-floating mb-3 ">
-										            <input type="text" class="fkactivite form-control" name="fkactivite" id="" value="0">
+										        <div class="form-floating mb-3 d-none">
+										            <input type="text" class="fkactivite form-control" name="fkactivite" value="0">
 										        </div>
 										        <div class="form-floating mb-3">
-										            <select class="fkpar form-select" id="selectact"
+										            <select class="fkpar form-select" id="selectpar"
 										                    aria-label="Floating label select example" name="fkpar">
 										                    <%
 															participantServiceImp pa = new participantServiceImp();
@@ -272,10 +272,10 @@
 										            		palist = pa.getAll();
 															for(Participant participant : palist) {
 															%>
-										                <option selected value="<%=  participant.getId_user() %>"><%=  participant.getId_user() %> <%=  participant.getNom() %> <%=  participant.getPrenom() %></option>
+										                <option selected value="<%=  participant.getId_user() %>"><%=  participant.getNom() %> <%=  participant.getPrenom() %></option>
 										                <%}%>
 										            </select>
-										            <label for="selectact">Participant</label>
+										            <label for="selectpar">Participant</label>
 										        </div>
 										        <div class="mx-auto w-50">
 										            <button type="submit" class="btn btn-primary py-3  mb-4 w-100">Participer</button>
@@ -286,6 +286,26 @@
                                 </div>
                             </div>
 			<!-- Modal addupdate End-->
+            <!-- Modal delete-->
+            <div class="modal fade" id="exampleModaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div id="deletemodal" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-danger" id="exampleModalLabel">DELETE ALERT</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="px-4 py-3">
+                            Etes-vous sur de vouloir supprimer? <br>
+                        </div>
+                        <form action="acdelete" method="get">
+                            <input type="text" class="iddelete form-control d-none" name="id" id="iddelete" value="0">
+                            <div class="px-4 py-3 mx-auto w-50">
+                                <button type="submit" class="btn btn-danger py-3  mb-4 w-100">Oui</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- Recent Sales Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
@@ -322,11 +342,11 @@
                                 <td><%=  activite.getDate_fin() %></td>
                                 <td><%=  activite.getDescriptif() %></td>
                                 <td><%=  activite.getEtat() %></td>
-                                <td><a title="Modifier activite" class="addupdate btn btn-sm " href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
-                                <a title="Supprimer activite" class="btn btn-sm " href="acdelete?id=<%=activite.getId_activite()%>"><i class="fa fa-trash text-primary"></i></a>
-                                <a title="Ajouter exercice" class="fknew btn btn-sm" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-icons text-primary"></i></a>
-                                <a title="Assigner à un responsable" class="fkact btn btn-sm" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"><i class="fa fa-user-tie text-primary"></i></a>
-                                <a title="Ajouter participant" class="fkpar btn btn-sm" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal4"><i class="fa fa-users text-primary"></i></a></td>
+                                <td><a title="Modifier activite" class="addupdate btn btn-sm  px-1" href="#addupdate" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pen text-primary"></i></a>
+                                <a title="Supprimer activite" class="deletebtn btn btn-sm  px-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaldelete" ><i class="fa fa-trash text-primary"></i></a>
+                                <a title="Ajouter exercice" class="fknew btn btn-sm px-1" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="fa fa-icons text-primary"></i></a>
+                                <a title="Assigner à un responsable" class="fkact btn btn-sm px-1" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"><i class="fa fa-user-tie text-primary"></i></a>
+                                <a title="Ajouter participant" class="fkpar btn btn-sm px-1" href="" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal4"><i class="fa fa-users text-primary"></i></a></td>
                             </tr>
                             <%}%>
                             </tbody>
@@ -396,6 +416,16 @@
             let id = children[0].textContent;
 
             document.querySelector('#addupdatepa .fkactivite').value = id;
+        })
+    })
+    document.querySelectorAll('.deletebtn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            let item = e.target.closest('.item');
+            let children = item.children;
+
+            let id = children[0].textContent;
+
+            document.querySelector('#deletemodal .iddelete').value = id;
         })
     })
     </script>
