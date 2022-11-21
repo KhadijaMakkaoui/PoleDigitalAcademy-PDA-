@@ -34,11 +34,9 @@ public class LoginServlet extends HttpServlet {
             if (asicon==true) {
                     session.setAttribute("login", login);
                     dispatcher = request.getRequestDispatcher("HomeServlet");
-
                 } else {
                     session.setAttribute("status", "failed");
             }
-
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
